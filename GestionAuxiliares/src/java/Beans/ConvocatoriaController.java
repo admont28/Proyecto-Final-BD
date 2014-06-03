@@ -1,11 +1,12 @@
 package Beans;
 
-import Entities.Convocatoria;
 import Beans.util.JsfUtil;
 import Beans.util.PaginationHelper;
 import Controller.ConvocatoriaJpaController;
-
+import Entities.Convocatoria;
+import Entities.Requisito;
 import java.io.Serializable;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -229,5 +230,5 @@ public class ConvocatoriaController implements Serializable {
         }
 
     }
-
+   
 }

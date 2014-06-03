@@ -67,20 +67,20 @@ public class SeleccionAuxiliaresController implements Serializable {
 
     public String prepareList() {
         recreateModel();
-        return "List";
+        return "/Pages/seleccionAuxiliares/List";
     }
 
     public String prepareView() {
         current = (SeleccionAuxiliares) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+        return "/Pages/seleccionAuxiliares/ListView";
     }
 
     public String prepareCreate() {
         current = new SeleccionAuxiliares();
         current.setSeleccionAuxiliaresPK(new Entities.SeleccionAuxiliaresPK());
         selectedItemIndex = -1;
-        return "Create";
+        return "/Pages/seleccionAuxiliares/ListCreate";
     }
 
     public String create() {
@@ -99,7 +99,7 @@ public class SeleccionAuxiliaresController implements Serializable {
     public String prepareEdit() {
         current = (SeleccionAuxiliares) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "Edit";
+        return "/Pages/seleccionAuxiliares/ListEdit";
     }
 
     public String update() {
@@ -108,7 +108,7 @@ public class SeleccionAuxiliaresController implements Serializable {
             current.getSeleccionAuxiliaresPK().setIdEvaluacionAuxiliares(current.getEvaluacionAuxiliares().getEvaluacionAuxiliaresId());
             getJpaController().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("SeleccionAuxiliaresUpdated"));
-            return "View";
+            return "/Pages/seleccionAuxiliares/ListView";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -121,7 +121,7 @@ public class SeleccionAuxiliaresController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "/Pages/seleccionAuxiliares/ListList";
     }
 
     public String destroyAndView() {
@@ -129,11 +129,11 @@ public class SeleccionAuxiliaresController implements Serializable {
         recreateModel();
         updateCurrentItem();
         if (selectedItemIndex >= 0) {
-            return "View";
+            return "/Pages/seleccionAuxiliares/ListView";
         } else {
             // all items were removed - go back to list
             recreateModel();
-            return "List";
+            return "/Pages/seleccionAuxiliares/ListList";
         }
     }
 
@@ -179,13 +179,13 @@ public class SeleccionAuxiliaresController implements Serializable {
     public String next() {
         getPagination().nextPage();
         recreateModel();
-        return "List";
+        return "/Pages/seleccionAuxiliares/ListList";
     }
 
     public String previous() {
         getPagination().previousPage();
         recreateModel();
-        return "List";
+        return "/Pages/seleccionAuxiliares/ListList";
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {

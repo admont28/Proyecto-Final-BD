@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSeleccionAuxiliaresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <center>
+                <h:form styleClass="jsfcrud_list_form">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <h:outputText escape="false" value="#{bundle.ListSeleccionAuxiliaresEmpty}" rendered="#{seleccionAuxiliaresController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{seleccionAuxiliaresController.items.rowCount > 0}">
+                        <h:outputText value="#{seleccionAuxiliaresController.pagination.pageFirstItem + 1}..#{seleccionAuxiliaresController.pagination.pageLastItem + 1}/#{seleccionAuxiliaresController.pagination.itemsCount}"/>&nbsp;
+                        <h:commandLink action="#{seleccionAuxiliaresController.previous}" value="#{bundle.Previous} #{seleccionAuxiliaresController.pagination.pageSize}" rendered="#{seleccionAuxiliaresController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{seleccionAuxiliaresController.next}" value="#{bundle.Next} #{seleccionAuxiliaresController.pagination.pageSize}" rendered="#{seleccionAuxiliaresController.pagination.hasNextPage}"/>&nbsp;
+                        <h:dataTable value="#{seleccionAuxiliaresController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                             <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListSeleccionAuxiliaresTitle_auxiliar}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.auxiliar}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListSeleccionAuxiliaresTitle_evaluacionAuxiliares}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.evaluacionAuxiliares}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListSeleccionAuxiliaresTitle_promedio}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.promedio}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListSeleccionAuxiliaresTitle_calificacion}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.calificacion}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListSeleccionAuxiliaresTitle_estado}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.estado}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.ListSeleccionAuxiliaresIndexLink}"/>
+                </h:form>
+            </center>
+        </ui:define>
+    </ui:composition>
+
+</html>
