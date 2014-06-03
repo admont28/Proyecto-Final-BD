@@ -72,13 +72,13 @@ public class CumplimientoActividadesController implements Serializable {
     public String prepareView() {
         current = (CumplimientoActividades) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+        return "/Pages/cumplimientoActividades/View";
     }
 
     public String prepareCreate() {
         current = new CumplimientoActividades();
         selectedItemIndex = -1;
-        return "Create";
+        return "/Pages/cumplimientoActividades/Create";
     }
 
     public String create() {
@@ -95,14 +95,14 @@ public class CumplimientoActividadesController implements Serializable {
     public String prepareEdit() {
         current = (CumplimientoActividades) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "Edit";
+        return "/Pages/cumplimientoActividades/Edit";
     }
 
     public String update() {
         try {
             getJpaController().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("CumplimientoActividadesUpdated"));
-            return "View";
+            return "/Pages/cumplimientoActividades/View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -115,7 +115,7 @@ public class CumplimientoActividadesController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "/Pages/cumplimientoActividades/List";
     }
 
     public String destroyAndView() {
@@ -123,11 +123,11 @@ public class CumplimientoActividadesController implements Serializable {
         recreateModel();
         updateCurrentItem();
         if (selectedItemIndex >= 0) {
-            return "View";
+            return "/Pages/cumplimientoActividades/View";
         } else {
             // all items were removed - go back to list
             recreateModel();
-            return "List";
+            return "/Pages/cumplimientoActividades/List";
         }
     }
 
@@ -173,13 +173,13 @@ public class CumplimientoActividadesController implements Serializable {
     public String next() {
         getPagination().nextPage();
         recreateModel();
-        return "List";
+        return "/Pages/cumplimientoActividades/List";
     }
 
     public String previous() {
         getPagination().previousPage();
         recreateModel();
-        return "List";
+        return "/Pages/cumplimientoActividades/List";
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {

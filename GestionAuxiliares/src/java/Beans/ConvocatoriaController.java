@@ -66,19 +66,19 @@ public class ConvocatoriaController implements Serializable {
 
     public String prepareList() {
         recreateModel();
-        return "List";
+        return "/Pages/convocatoria/List";
     }
 
     public String prepareView() {
         current = (Convocatoria) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+        return "/Pages/convocatoria/View";
     }
 
     public String prepareCreate() {
         current = new Convocatoria();
         selectedItemIndex = -1;
-        return "Create";
+        return "/Pages/convocatoria/Create";
     }
 
     public String create() {
@@ -95,14 +95,14 @@ public class ConvocatoriaController implements Serializable {
     public String prepareEdit() {
         current = (Convocatoria) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "Edit";
+        return "/Pages/convocatoria/Edit";
     }
 
     public String update() {
         try {
             getJpaController().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ConvocatoriaUpdated"));
-            return "View";
+            return "/Pages/convocatoria/View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -115,7 +115,7 @@ public class ConvocatoriaController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "/Pages/convocatoria/List";
     }
 
     public String destroyAndView() {
@@ -123,11 +123,11 @@ public class ConvocatoriaController implements Serializable {
         recreateModel();
         updateCurrentItem();
         if (selectedItemIndex >= 0) {
-            return "View";
+            return "/Pages/convocatoria/View";
         } else {
             // all items were removed - go back to list
             recreateModel();
-            return "List";
+            return "/Pages/convocatoria/List";
         }
     }
 
@@ -173,13 +173,13 @@ public class ConvocatoriaController implements Serializable {
     public String next() {
         getPagination().nextPage();
         recreateModel();
-        return "List";
+        return "/Pages/convocatoria/List";
     }
 
     public String previous() {
         getPagination().previousPage();
         recreateModel();
-        return "List";
+        return "/Pages/convocatoria/List";
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {
