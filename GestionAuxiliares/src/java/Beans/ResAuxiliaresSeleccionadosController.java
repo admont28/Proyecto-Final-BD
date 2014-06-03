@@ -66,19 +66,19 @@ public class ResAuxiliaresSeleccionadosController implements Serializable {
 
     public String prepareList() {
         recreateModel();
-        return "List";
+        return "/Pages/resAuxiliaresSeleccionados/List";
     }
 
     public String prepareView() {
         current = (ResAuxiliaresSeleccionados) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+        return "/Pages/resAuxiliaresSeleccionados/View";
     }
 
     public String prepareCreate() {
         current = new ResAuxiliaresSeleccionados();
         selectedItemIndex = -1;
-        return "Create";
+        return "/Pages/resAuxiliaresSeleccionados/Create";
     }
 
     public String create() {
@@ -95,14 +95,14 @@ public class ResAuxiliaresSeleccionadosController implements Serializable {
     public String prepareEdit() {
         current = (ResAuxiliaresSeleccionados) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "Edit";
+        return "/Pages/resAuxiliaresSeleccionados/Edit";
     }
 
     public String update() {
         try {
             getJpaController().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ResAuxiliaresSeleccionadosUpdated"));
-            return "View";
+            return "/Pages/resAuxiliaresSeleccionados/View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -115,7 +115,7 @@ public class ResAuxiliaresSeleccionadosController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "/Pages/resAuxiliaresSeleccionados/List";
     }
 
     public String destroyAndView() {
@@ -123,11 +123,11 @@ public class ResAuxiliaresSeleccionadosController implements Serializable {
         recreateModel();
         updateCurrentItem();
         if (selectedItemIndex >= 0) {
-            return "View";
+            return "/Pages/resAuxiliaresSeleccionados/View";
         } else {
             // all items were removed - go back to list
             recreateModel();
-            return "List";
+            return "/Pages/resAuxiliaresSeleccionados/List";
         }
     }
 
@@ -173,13 +173,13 @@ public class ResAuxiliaresSeleccionadosController implements Serializable {
     public String next() {
         getPagination().nextPage();
         recreateModel();
-        return "List";
+        return "/Pages/resAuxiliaresSeleccionados/List";
     }
 
     public String previous() {
         getPagination().previousPage();
         recreateModel();
-        return "List";
+        return "/Pages/resAuxiliaresSeleccionados/List";
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {

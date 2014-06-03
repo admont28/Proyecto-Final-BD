@@ -67,20 +67,20 @@ public class DetalleResolucionController implements Serializable {
 
     public String prepareList() {
         recreateModel();
-        return "List";
+        return "/Pages/detalleResolucion/List";
     }
 
     public String prepareView() {
         current = (DetalleResolucion) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+        return "/Pages/detalleResolucion/View";
     }
 
     public String prepareCreate() {
         current = new DetalleResolucion();
         current.setDetalleResolucionPK(new Entities.DetalleResolucionPK());
         selectedItemIndex = -1;
-        return "Create";
+        return "/Pages/detalleResolucion/Create";
     }
 
     public String create() {
@@ -99,7 +99,7 @@ public class DetalleResolucionController implements Serializable {
     public String prepareEdit() {
         current = (DetalleResolucion) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "Edit";
+        return "/Pages/detalleResolucion/Edit";
     }
 
     public String update() {
@@ -108,7 +108,7 @@ public class DetalleResolucionController implements Serializable {
             current.getDetalleResolucionPK().setIdResAuxSel(current.getResAuxiliaresSeleccionados().getResAuxSelId());
             getJpaController().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("DetalleResolucionUpdated"));
-            return "View";
+            return "/Pages/detalleResolucion/View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -121,7 +121,7 @@ public class DetalleResolucionController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "/Pages/detalleResolucion/List";
     }
 
     public String destroyAndView() {
@@ -129,11 +129,11 @@ public class DetalleResolucionController implements Serializable {
         recreateModel();
         updateCurrentItem();
         if (selectedItemIndex >= 0) {
-            return "View";
+            return "/Pages/detalleResolucion/View";
         } else {
             // all items were removed - go back to list
             recreateModel();
-            return "List";
+            return "/Pages/detalleResolucion/List";
         }
     }
 
@@ -179,13 +179,13 @@ public class DetalleResolucionController implements Serializable {
     public String next() {
         getPagination().nextPage();
         recreateModel();
-        return "List";
+        return "/Pages/detalleResolucion/List";
     }
 
     public String previous() {
         getPagination().previousPage();
         recreateModel();
-        return "List";
+        return "/Pages/detalleResolucion/List";
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {
