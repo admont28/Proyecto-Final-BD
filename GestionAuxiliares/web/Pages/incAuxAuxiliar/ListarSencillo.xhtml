@@ -10,42 +10,44 @@
             <h:outputText value="#{bundle.ListIncAuxAuxiliarTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <h:form styleClass="jsfcrud_list_form">
-                <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
-                <h:outputText escape="false" value="#{bundle.ListIncAuxAuxiliarEmpty}" rendered="#{incAuxAuxiliarController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{incAuxAuxiliarController.items.rowCount > 0}">
-                    <h:outputText value="#{incAuxAuxiliarController.pagination.pageFirstItem + 1}..#{incAuxAuxiliarController.pagination.pageLastItem + 1}/#{incAuxAuxiliarController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{incAuxAuxiliarController.previous}" value="#{bundle.Previous} #{incAuxAuxiliarController.pagination.pageSize}" rendered="#{incAuxAuxiliarController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{incAuxAuxiliarController.next}" value="#{bundle.Next} #{incAuxAuxiliarController.pagination.pageSize}" rendered="#{incAuxAuxiliarController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{incAuxAuxiliarController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListIncAuxAuxiliarTitle_idSolicitante}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idSolicitante}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListIncAuxAuxiliarTitle_inconformidadAuxiliares}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.inconformidadAuxiliares}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListIncAuxAuxiliarTitle_auxiliar}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.auxiliar}"/>
-                        </h:column>
-                    </h:dataTable>
-                </h:panelGroup>
-                <br />
-                <h:commandLink action="#{incAuxAuxiliarController.prepareCreate}" value="#{bundle.ListIncAuxAuxiliarCreateLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListIncAuxAuxiliarIndexLink}"/>
-            </h:form>
+            <center> 
+                <h:form styleClass="jsfcrud_list_form">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <h:outputText escape="false" value="#{bundle.ListIncAuxAuxiliarEmpty}" rendered="#{incAuxAuxiliarController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{incAuxAuxiliarController.items.rowCount > 0}">
+                        <h:outputText value="#{incAuxAuxiliarController.pagination.pageFirstItem + 1}..#{incAuxAuxiliarController.pagination.pageLastItem + 1}/#{incAuxAuxiliarController.pagination.itemsCount}"/>&nbsp;
+                        <h:commandLink action="#{incAuxAuxiliarController.previous}" value="#{bundle.Previous} #{incAuxAuxiliarController.pagination.pageSize}" rendered="#{incAuxAuxiliarController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{incAuxAuxiliarController.next}" value="#{bundle.Next} #{incAuxAuxiliarController.pagination.pageSize}" rendered="#{incAuxAuxiliarController.pagination.hasNextPage}"/>&nbsp;
+                        <h:dataTable value="#{incAuxAuxiliarController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListIncAuxAuxiliarTitle_idSolicitante}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idSolicitante}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListIncAuxAuxiliarTitle_inconformidadAuxiliares}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.inconformidadAuxiliares}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListIncAuxAuxiliarTitle_auxiliar}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.auxiliar}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                    <br />
+                    <h:commandLink action="#{incAuxAuxiliarController.prepareCreate}" value="#{bundle.ListIncAuxAuxiliarCreateLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.ListIncAuxAuxiliarIndexLink}"/>
+                </h:form>
+            </center>
         </ui:define>
     </ui:composition>
 

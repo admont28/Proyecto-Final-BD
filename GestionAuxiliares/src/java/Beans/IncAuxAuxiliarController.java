@@ -67,20 +67,20 @@ public class IncAuxAuxiliarController implements Serializable {
 
     public String prepareList() {
         recreateModel();
-        return "List";
+        return "/Pages/incAuxAuxiliar/List";
     }
 
     public String prepareView() {
         current = (IncAuxAuxiliar) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+        return "/Pages/incAuxAuxiliar/View";
     }
 
     public String prepareCreate() {
         current = new IncAuxAuxiliar();
         current.setIncAuxAuxiliarPK(new Entities.IncAuxAuxiliarPK());
         selectedItemIndex = -1;
-        return "Create";
+        return "/Pages/incAuxAuxiliar/Create";
     }
 
     public String create() {
@@ -99,7 +99,7 @@ public class IncAuxAuxiliarController implements Serializable {
     public String prepareEdit() {
         current = (IncAuxAuxiliar) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "Edit";
+        return "/Pages/incAuxAuxiliar/Edit";
     }
 
     public String update() {
@@ -108,7 +108,7 @@ public class IncAuxAuxiliarController implements Serializable {
             current.getIncAuxAuxiliarPK().setIdInconformidadAuxiliares(current.getInconformidadAuxiliares().getInconformidadAuxiliaresId());
             getJpaController().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("IncAuxAuxiliarUpdated"));
-            return "View";
+            return "/Pages/incAuxAuxiliar/View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -121,7 +121,7 @@ public class IncAuxAuxiliarController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "/Pages/incAuxAuxiliar/List";
     }
 
     public String destroyAndView() {
@@ -129,11 +129,11 @@ public class IncAuxAuxiliarController implements Serializable {
         recreateModel();
         updateCurrentItem();
         if (selectedItemIndex >= 0) {
-            return "View";
+            return "/Pages/incAuxAuxiliar/View";
         } else {
             // all items were removed - go back to list
             recreateModel();
-            return "List";
+            return "/Pages/incAuxAuxiliar/List";
         }
     }
 
@@ -179,13 +179,13 @@ public class IncAuxAuxiliarController implements Serializable {
     public String next() {
         getPagination().nextPage();
         recreateModel();
-        return "List";
+        return "/Pages/incAuxAuxiliar/List";
     }
 
     public String previous() {
         getPagination().previousPage();
         recreateModel();
-        return "List";
+        return "/Pages/incAuxAuxiliar/List";
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {
