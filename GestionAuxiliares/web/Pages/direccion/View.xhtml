@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDireccionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDireccionLabel_direccionId}"/>
+                    <h:outputText value="#{direccionController.selected.direccionId}" title="#{bundle.ViewDireccionTitle_direccionId}"/>
+                    <h:outputText value="#{bundle.ViewDireccionLabel_calle}"/>
+                    <h:outputText value="#{direccionController.selected.calle}" title="#{bundle.ViewDireccionTitle_calle}"/>
+                    <h:outputText value="#{bundle.ViewDireccionLabel_carrera}"/>
+                    <h:outputText value="#{direccionController.selected.carrera}" title="#{bundle.ViewDireccionTitle_carrera}"/>
+                    <h:outputText value="#{bundle.ViewDireccionLabel_numero}"/>
+                    <h:outputText value="#{direccionController.selected.numero}" title="#{bundle.ViewDireccionTitle_numero}"/>
+                    <h:outputText value="#{bundle.ViewDireccionLabel_idCiudad}"/>
+                    <h:outputText value="#{direccionController.selected.idCiudad}" title="#{bundle.ViewDireccionTitle_idCiudad}"/>
+                    <h:outputText value="#{bundle.ViewDireccionLabel_universidad}"/>
+                    <h:outputText value="#{direccionController.selected.universidad}" title="#{bundle.ViewDireccionTitle_universidad}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{direccionController.destroyAndView}" value="#{bundle.ViewDireccionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDireccionEditLink}"/>
+                <br />
+                <h:commandLink action="#{direccionController.prepareCreate}" value="#{bundle.ViewDireccionCreateLink}" />
+                <br />
+                <h:commandLink action="#{direccionController.prepareList}" value="#{bundle.ViewDireccionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDireccionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

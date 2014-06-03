@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTipoAuxiliarTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTipoAuxiliarLabel_tipoAuxiliarId}" for="tipoAuxiliarId" />
+                    <h:inputText id="tipoAuxiliarId" value="#{tipoAuxiliarController.selected.tipoAuxiliarId}" title="#{bundle.CreateTipoAuxiliarTitle_tipoAuxiliarId}" required="true" requiredMessage="#{bundle.CreateTipoAuxiliarRequiredMessage_tipoAuxiliarId}"/>
+                    <h:outputLabel value="#{bundle.CreateTipoAuxiliarLabel_descripcionTipoAuxiliar}" for="descripcionTipoAuxiliar" />
+                    <h:inputText id="descripcionTipoAuxiliar" value="#{tipoAuxiliarController.selected.descripcionTipoAuxiliar}" title="#{bundle.CreateTipoAuxiliarTitle_descripcionTipoAuxiliar}" required="true" requiredMessage="#{bundle.CreateTipoAuxiliarRequiredMessage_descripcionTipoAuxiliar}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoAuxiliarController.create}" value="#{bundle.CreateTipoAuxiliarSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tipoAuxiliarController.prepareList}" value="#{bundle.CreateTipoAuxiliarShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTipoAuxiliarIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

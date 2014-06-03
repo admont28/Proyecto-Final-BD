@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditConvocatoriaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditConvocatoriaLabel_convocatoriaId}" for="convocatoriaId" />
+                    <h:inputText id="convocatoriaId" value="#{convocatoriaController.selected.convocatoriaId}" title="#{bundle.EditConvocatoriaTitle_convocatoriaId}" required="true" requiredMessage="#{bundle.EditConvocatoriaRequiredMessage_convocatoriaId}"/>
+                    <h:outputLabel value="#{bundle.EditConvocatoriaLabel_infoAdicionalConvocatoria}" for="infoAdicionalConvocatoria" />
+                    <h:inputText id="infoAdicionalConvocatoria" value="#{convocatoriaController.selected.infoAdicionalConvocatoria}" title="#{bundle.EditConvocatoriaTitle_infoAdicionalConvocatoria}" required="true" requiredMessage="#{bundle.EditConvocatoriaRequiredMessage_infoAdicionalConvocatoria}"/>
+                    <h:outputLabel value="#{bundle.EditConvocatoriaLabel_fechaCreacion}" for="fechaCreacion" />
+                    <h:inputText id="fechaCreacion" value="#{convocatoriaController.selected.fechaCreacion}" title="#{bundle.EditConvocatoriaTitle_fechaCreacion}" required="true" requiredMessage="#{bundle.EditConvocatoriaRequiredMessage_fechaCreacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditConvocatoriaLabel_fechaApertura}" for="fechaApertura" />
+                    <h:inputText id="fechaApertura" value="#{convocatoriaController.selected.fechaApertura}" title="#{bundle.EditConvocatoriaTitle_fechaApertura}" required="true" requiredMessage="#{bundle.EditConvocatoriaRequiredMessage_fechaApertura}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditConvocatoriaLabel_fechaCierre}" for="fechaCierre" />
+                    <h:inputText id="fechaCierre" value="#{convocatoriaController.selected.fechaCierre}" title="#{bundle.EditConvocatoriaTitle_fechaCierre}" required="true" requiredMessage="#{bundle.EditConvocatoriaRequiredMessage_fechaCierre}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditConvocatoriaLabel_fechaPrueba}" for="fechaPrueba" />
+                    <h:inputText id="fechaPrueba" value="#{convocatoriaController.selected.fechaPrueba}" title="#{bundle.EditConvocatoriaTitle_fechaPrueba}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditConvocatoriaLabel_idTipoAuxiliar}" for="idTipoAuxiliar" />
+                    <h:selectOneMenu id="idTipoAuxiliar" value="#{convocatoriaController.selected.idTipoAuxiliar}" title="#{bundle.EditConvocatoriaTitle_idTipoAuxiliar}" required="true" requiredMessage="#{bundle.EditConvocatoriaRequiredMessage_idTipoAuxiliar}">
+                        <f:selectItems value="#{tipoAuxiliarController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditConvocatoriaLabel_idSolicitudAuxiliares}" for="idSolicitudAuxiliares" />
+                    <h:selectOneMenu id="idSolicitudAuxiliares" value="#{convocatoriaController.selected.idSolicitudAuxiliares}" title="#{bundle.EditConvocatoriaTitle_idSolicitudAuxiliares}" required="true" requiredMessage="#{bundle.EditConvocatoriaRequiredMessage_idSolicitudAuxiliares}">
+                        <f:selectItems value="#{solicitudAuxiliaresController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditConvocatoriaLabel_idProgramaAcademico}" for="idProgramaAcademico" />
+                    <h:selectOneMenu id="idProgramaAcademico" value="#{convocatoriaController.selected.idProgramaAcademico}" title="#{bundle.EditConvocatoriaTitle_idProgramaAcademico}" required="true" requiredMessage="#{bundle.EditConvocatoriaRequiredMessage_idProgramaAcademico}">
+                        <f:selectItems value="#{programaAcademicoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditConvocatoriaLabel_evaluacionAuxiliares}" for="evaluacionAuxiliares" />
+                    <h:selectOneMenu id="evaluacionAuxiliares" value="#{convocatoriaController.selected.evaluacionAuxiliares}" title="#{bundle.EditConvocatoriaTitle_evaluacionAuxiliares}" >
+                        <f:selectItems value="#{evaluacionAuxiliaresController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{convocatoriaController.update}" value="#{bundle.EditConvocatoriaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditConvocatoriaViewLink}"/>
+                <br />
+                <h:commandLink action="#{convocatoriaController.prepareList}" value="#{bundle.EditConvocatoriaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditConvocatoriaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

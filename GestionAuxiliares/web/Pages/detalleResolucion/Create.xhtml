@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDetalleResolucionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDetalleResolucionLabel_promAuxDetRes}" for="promAuxDetRes" />
+                    <h:inputText id="promAuxDetRes" value="#{detalleResolucionController.selected.promAuxDetRes}" title="#{bundle.CreateDetalleResolucionTitle_promAuxDetRes}" required="true" requiredMessage="#{bundle.CreateDetalleResolucionRequiredMessage_promAuxDetRes}"/>
+                    <h:outputLabel value="#{bundle.CreateDetalleResolucionLabel_valorPagarDetalleRes}" for="valorPagarDetalleRes" />
+                    <h:inputText id="valorPagarDetalleRes" value="#{detalleResolucionController.selected.valorPagarDetalleRes}" title="#{bundle.CreateDetalleResolucionTitle_valorPagarDetalleRes}" required="true" requiredMessage="#{bundle.CreateDetalleResolucionRequiredMessage_valorPagarDetalleRes}"/>
+                    <h:outputLabel value="#{bundle.CreateDetalleResolucionLabel_cantHorasDetalleRes}" for="cantHorasDetalleRes" />
+                    <h:inputText id="cantHorasDetalleRes" value="#{detalleResolucionController.selected.cantHorasDetalleRes}" title="#{bundle.CreateDetalleResolucionTitle_cantHorasDetalleRes}" required="true" requiredMessage="#{bundle.CreateDetalleResolucionRequiredMessage_cantHorasDetalleRes}"/>
+                    <h:outputLabel value="#{bundle.CreateDetalleResolucionLabel_resAuxiliaresSeleccionados}" for="resAuxiliaresSeleccionados" />
+                    <h:selectOneMenu id="resAuxiliaresSeleccionados" value="#{detalleResolucionController.selected.resAuxiliaresSeleccionados}" title="#{bundle.CreateDetalleResolucionTitle_resAuxiliaresSeleccionados}" required="true" requiredMessage="#{bundle.CreateDetalleResolucionRequiredMessage_resAuxiliaresSeleccionados}">
+                        <f:selectItems value="#{resAuxiliaresSeleccionadosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDetalleResolucionLabel_auxiliar}" for="auxiliar" />
+                    <h:selectOneMenu id="auxiliar" value="#{detalleResolucionController.selected.auxiliar}" title="#{bundle.CreateDetalleResolucionTitle_auxiliar}" required="true" requiredMessage="#{bundle.CreateDetalleResolucionRequiredMessage_auxiliar}">
+                        <f:selectItems value="#{auxiliarController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{detalleResolucionController.create}" value="#{bundle.CreateDetalleResolucionSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{detalleResolucionController.prepareList}" value="#{bundle.CreateDetalleResolucionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateDetalleResolucionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

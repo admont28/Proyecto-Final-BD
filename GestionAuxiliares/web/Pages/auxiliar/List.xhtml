@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAuxiliarTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListAuxiliarEmpty}" rendered="#{auxiliarController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{auxiliarController.items.rowCount > 0}">
+                    <h:outputText value="#{auxiliarController.pagination.pageFirstItem + 1}..#{auxiliarController.pagination.pageLastItem + 1}/#{auxiliarController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{auxiliarController.previous}" value="#{bundle.Previous} #{auxiliarController.pagination.pageSize}" rendered="#{auxiliarController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{auxiliarController.next}" value="#{bundle.Next} #{auxiliarController.pagination.pageSize}" rendered="#{auxiliarController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{auxiliarController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuxiliarTitle_auxiliarId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.auxiliarId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuxiliarTitle_codigoAuxiliar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoAuxiliar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuxiliarTitle_nombreAuxiliar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreAuxiliar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuxiliarTitle_apellidoAuxiliar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.apellidoAuxiliar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuxiliarTitle_telefonoAuxiliar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefonoAuxiliar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuxiliarTitle_passwordAux}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.passwordAux}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuxiliarTitle_idProgramaAcademico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idProgramaAcademico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuxiliarTitle_idDireccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDireccion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{auxiliarController.prepareView}" value="#{bundle.ListAuxiliarViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{auxiliarController.prepareEdit}" value="#{bundle.ListAuxiliarEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{auxiliarController.destroy}" value="#{bundle.ListAuxiliarDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{auxiliarController.prepareCreate}" value="#{bundle.ListAuxiliarCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListAuxiliarIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditInscripcionConvocatoriaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditInscripcionConvocatoriaLabel_fechaInscripcionConvocatoria}" for="fechaInscripcionConvocatoria" />
+                    <h:inputText id="fechaInscripcionConvocatoria" value="#{inscripcionConvocatoriaController.selected.fechaInscripcionConvocatoria}" title="#{bundle.EditInscripcionConvocatoriaTitle_fechaInscripcionConvocatoria}" required="true" requiredMessage="#{bundle.EditInscripcionConvocatoriaRequiredMessage_fechaInscripcionConvocatoria}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditInscripcionConvocatoriaLabel_convocatoria}" for="convocatoria" />
+                    <h:selectOneMenu id="convocatoria" value="#{inscripcionConvocatoriaController.selected.convocatoria}" title="#{bundle.EditInscripcionConvocatoriaTitle_convocatoria}" required="true" requiredMessage="#{bundle.EditInscripcionConvocatoriaRequiredMessage_convocatoria}">
+                        <f:selectItems value="#{convocatoriaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditInscripcionConvocatoriaLabel_auxiliar}" for="auxiliar" />
+                    <h:selectOneMenu id="auxiliar" value="#{inscripcionConvocatoriaController.selected.auxiliar}" title="#{bundle.EditInscripcionConvocatoriaTitle_auxiliar}" required="true" requiredMessage="#{bundle.EditInscripcionConvocatoriaRequiredMessage_auxiliar}">
+                        <f:selectItems value="#{auxiliarController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{inscripcionConvocatoriaController.update}" value="#{bundle.EditInscripcionConvocatoriaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditInscripcionConvocatoriaViewLink}"/>
+                <br />
+                <h:commandLink action="#{inscripcionConvocatoriaController.prepareList}" value="#{bundle.EditInscripcionConvocatoriaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditInscripcionConvocatoriaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

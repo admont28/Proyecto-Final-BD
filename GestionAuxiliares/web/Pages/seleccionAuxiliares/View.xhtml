@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSeleccionAuxiliaresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSeleccionAuxiliaresLabel_calificacion}"/>
+                    <h:outputText value="#{seleccionAuxiliaresController.selected.calificacion}" title="#{bundle.ViewSeleccionAuxiliaresTitle_calificacion}"/>
+                    <h:outputText value="#{bundle.ViewSeleccionAuxiliaresLabel_estado}"/>
+                    <h:outputText value="#{seleccionAuxiliaresController.selected.estado}" title="#{bundle.ViewSeleccionAuxiliaresTitle_estado}"/>
+                    <h:outputText value="#{bundle.ViewSeleccionAuxiliaresLabel_promedio}"/>
+                    <h:outputText value="#{seleccionAuxiliaresController.selected.promedio}" title="#{bundle.ViewSeleccionAuxiliaresTitle_promedio}"/>
+                    <h:outputText value="#{bundle.ViewSeleccionAuxiliaresLabel_evaluacionAuxiliares}"/>
+                    <h:outputText value="#{seleccionAuxiliaresController.selected.evaluacionAuxiliares}" title="#{bundle.ViewSeleccionAuxiliaresTitle_evaluacionAuxiliares}"/>
+                    <h:outputText value="#{bundle.ViewSeleccionAuxiliaresLabel_auxiliar}"/>
+                    <h:outputText value="#{seleccionAuxiliaresController.selected.auxiliar}" title="#{bundle.ViewSeleccionAuxiliaresTitle_auxiliar}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{seleccionAuxiliaresController.destroyAndView}" value="#{bundle.ViewSeleccionAuxiliaresDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSeleccionAuxiliaresEditLink}"/>
+                <br />
+                <h:commandLink action="#{seleccionAuxiliaresController.prepareCreate}" value="#{bundle.ViewSeleccionAuxiliaresCreateLink}" />
+                <br />
+                <h:commandLink action="#{seleccionAuxiliaresController.prepareList}" value="#{bundle.ViewSeleccionAuxiliaresShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSeleccionAuxiliaresIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

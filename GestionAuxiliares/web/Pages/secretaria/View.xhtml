@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSecretariaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSecretariaLabel_secretariaId}"/>
+                    <h:outputText value="#{secretariaController.selected.secretariaId}" title="#{bundle.ViewSecretariaTitle_secretariaId}"/>
+                    <h:outputText value="#{bundle.ViewSecretariaLabel_nombreSecretaria}"/>
+                    <h:outputText value="#{secretariaController.selected.nombreSecretaria}" title="#{bundle.ViewSecretariaTitle_nombreSecretaria}"/>
+                    <h:outputText value="#{bundle.ViewSecretariaLabel_apellidoSecretaria}"/>
+                    <h:outputText value="#{secretariaController.selected.apellidoSecretaria}" title="#{bundle.ViewSecretariaTitle_apellidoSecretaria}"/>
+                    <h:outputText value="#{bundle.ViewSecretariaLabel_telefonoSecretaria}"/>
+                    <h:outputText value="#{secretariaController.selected.telefonoSecretaria}" title="#{bundle.ViewSecretariaTitle_telefonoSecretaria}"/>
+                    <h:outputText value="#{bundle.ViewSecretariaLabel_passwordSecretaria}"/>
+                    <h:outputText value="#{secretariaController.selected.passwordSecretaria}" title="#{bundle.ViewSecretariaTitle_passwordSecretaria}"/>
+                    <h:outputText value="#{bundle.ViewSecretariaLabel_consejoCurricular}"/>
+                    <h:outputText value="#{secretariaController.selected.consejoCurricular}" title="#{bundle.ViewSecretariaTitle_consejoCurricular}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{secretariaController.destroyAndView}" value="#{bundle.ViewSecretariaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSecretariaEditLink}"/>
+                <br />
+                <h:commandLink action="#{secretariaController.prepareCreate}" value="#{bundle.ViewSecretariaCreateLink}" />
+                <br />
+                <h:commandLink action="#{secretariaController.prepareList}" value="#{bundle.ViewSecretariaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSecretariaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

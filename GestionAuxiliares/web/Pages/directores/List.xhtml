@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDirectoresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDirectoresEmpty}" rendered="#{directoresController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{directoresController.items.rowCount > 0}">
+                    <h:outputText value="#{directoresController.pagination.pageFirstItem + 1}..#{directoresController.pagination.pageLastItem + 1}/#{directoresController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{directoresController.previous}" value="#{bundle.Previous} #{directoresController.pagination.pageSize}" rendered="#{directoresController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{directoresController.next}" value="#{bundle.Next} #{directoresController.pagination.pageSize}" rendered="#{directoresController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{directoresController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDirectoresTitle_idSolicitante}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSolicitante}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDirectoresTitle_programaAcademico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.programaAcademico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDirectoresTitle_jornada}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.jornada}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{directoresController.prepareView}" value="#{bundle.ListDirectoresViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{directoresController.prepareEdit}" value="#{bundle.ListDirectoresEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{directoresController.destroy}" value="#{bundle.ListDirectoresDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{directoresController.prepareCreate}" value="#{bundle.ListDirectoresCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDirectoresIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListResAuxiliaresSeleccionadosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListResAuxiliaresSeleccionadosEmpty}" rendered="#{resAuxiliaresSeleccionadosController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{resAuxiliaresSeleccionadosController.items.rowCount > 0}">
+                    <h:outputText value="#{resAuxiliaresSeleccionadosController.pagination.pageFirstItem + 1}..#{resAuxiliaresSeleccionadosController.pagination.pageLastItem + 1}/#{resAuxiliaresSeleccionadosController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{resAuxiliaresSeleccionadosController.previous}" value="#{bundle.Previous} #{resAuxiliaresSeleccionadosController.pagination.pageSize}" rendered="#{resAuxiliaresSeleccionadosController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{resAuxiliaresSeleccionadosController.next}" value="#{bundle.Next} #{resAuxiliaresSeleccionadosController.pagination.pageSize}" rendered="#{resAuxiliaresSeleccionadosController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{resAuxiliaresSeleccionadosController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResAuxiliaresSeleccionadosTitle_resAuxSelId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.resAuxSelId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResAuxiliaresSeleccionadosTitle_descResAuxSel}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descResAuxSel}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResAuxiliaresSeleccionadosTitle_fechaCreaResAuxSel}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaCreaResAuxSel}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResAuxiliaresSeleccionadosTitle_idSolicitante}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSolicitante}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{resAuxiliaresSeleccionadosController.prepareView}" value="#{bundle.ListResAuxiliaresSeleccionadosViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{resAuxiliaresSeleccionadosController.prepareEdit}" value="#{bundle.ListResAuxiliaresSeleccionadosEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{resAuxiliaresSeleccionadosController.destroy}" value="#{bundle.ListResAuxiliaresSeleccionadosDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{resAuxiliaresSeleccionadosController.prepareCreate}" value="#{bundle.ListResAuxiliaresSeleccionadosCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListResAuxiliaresSeleccionadosIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

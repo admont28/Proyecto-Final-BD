@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSolicitanteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSolicitanteLabel_solicitanteId}" for="solicitanteId" />
+                    <h:inputText id="solicitanteId" value="#{solicitanteController.selected.solicitanteId}" title="#{bundle.CreateSolicitanteTitle_solicitanteId}" required="true" requiredMessage="#{bundle.CreateSolicitanteRequiredMessage_solicitanteId}"/>
+                    <h:outputLabel value="#{bundle.CreateSolicitanteLabel_nombreSolicitante}" for="nombreSolicitante" />
+                    <h:inputText id="nombreSolicitante" value="#{solicitanteController.selected.nombreSolicitante}" title="#{bundle.CreateSolicitanteTitle_nombreSolicitante}" required="true" requiredMessage="#{bundle.CreateSolicitanteRequiredMessage_nombreSolicitante}"/>
+                    <h:outputLabel value="#{bundle.CreateSolicitanteLabel_apellidoSolicitante}" for="apellidoSolicitante" />
+                    <h:inputText id="apellidoSolicitante" value="#{solicitanteController.selected.apellidoSolicitante}" title="#{bundle.CreateSolicitanteTitle_apellidoSolicitante}" required="true" requiredMessage="#{bundle.CreateSolicitanteRequiredMessage_apellidoSolicitante}"/>
+                    <h:outputLabel value="#{bundle.CreateSolicitanteLabel_telefonoSolicitante}" for="telefonoSolicitante" />
+                    <h:inputText id="telefonoSolicitante" value="#{solicitanteController.selected.telefonoSolicitante}" title="#{bundle.CreateSolicitanteTitle_telefonoSolicitante}" required="true" requiredMessage="#{bundle.CreateSolicitanteRequiredMessage_telefonoSolicitante}"/>
+                    <h:outputLabel value="#{bundle.CreateSolicitanteLabel_passwordSolicitante}" for="passwordSolicitante" />
+                    <h:inputText id="passwordSolicitante" value="#{solicitanteController.selected.passwordSolicitante}" title="#{bundle.CreateSolicitanteTitle_passwordSolicitante}" required="true" requiredMessage="#{bundle.CreateSolicitanteRequiredMessage_passwordSolicitante}"/>
+                    <h:outputLabel value="#{bundle.CreateSolicitanteLabel_directores}" for="directores" />
+                    <h:selectOneMenu id="directores" value="#{solicitanteController.selected.directores}" title="#{bundle.CreateSolicitanteTitle_directores}" >
+                        <f:selectItems value="#{directoresController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSolicitanteLabel_idProgramaAcademico}" for="idProgramaAcademico" />
+                    <h:selectOneMenu id="idProgramaAcademico" value="#{solicitanteController.selected.idProgramaAcademico}" title="#{bundle.CreateSolicitanteTitle_idProgramaAcademico}" required="true" requiredMessage="#{bundle.CreateSolicitanteRequiredMessage_idProgramaAcademico}">
+                        <f:selectItems value="#{programaAcademicoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSolicitanteLabel_idDireccion}" for="idDireccion" />
+                    <h:selectOneMenu id="idDireccion" value="#{solicitanteController.selected.idDireccion}" title="#{bundle.CreateSolicitanteTitle_idDireccion}" required="true" requiredMessage="#{bundle.CreateSolicitanteRequiredMessage_idDireccion}">
+                        <f:selectItems value="#{direccionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSolicitanteLabel_idConsejoCurricular}" for="idConsejoCurricular" />
+                    <h:selectOneMenu id="idConsejoCurricular" value="#{solicitanteController.selected.idConsejoCurricular}" title="#{bundle.CreateSolicitanteTitle_idConsejoCurricular}" >
+                        <f:selectItems value="#{consejoCurricularController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSolicitanteLabel_idCargo}" for="idCargo" />
+                    <h:selectOneMenu id="idCargo" value="#{solicitanteController.selected.idCargo}" title="#{bundle.CreateSolicitanteTitle_idCargo}" required="true" requiredMessage="#{bundle.CreateSolicitanteRequiredMessage_idCargo}">
+                        <f:selectItems value="#{cargoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSolicitanteLabel_idArea}" for="idArea" />
+                    <h:selectOneMenu id="idArea" value="#{solicitanteController.selected.idArea}" title="#{bundle.CreateSolicitanteTitle_idArea}" required="true" requiredMessage="#{bundle.CreateSolicitanteRequiredMessage_idArea}">
+                        <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{solicitanteController.create}" value="#{bundle.CreateSolicitanteSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{solicitanteController.prepareList}" value="#{bundle.CreateSolicitanteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSolicitanteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

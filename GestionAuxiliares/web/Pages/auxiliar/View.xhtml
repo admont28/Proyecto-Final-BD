@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAuxiliarTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAuxiliarLabel_auxiliarId}"/>
+                    <h:outputText value="#{auxiliarController.selected.auxiliarId}" title="#{bundle.ViewAuxiliarTitle_auxiliarId}"/>
+                    <h:outputText value="#{bundle.ViewAuxiliarLabel_codigoAuxiliar}"/>
+                    <h:outputText value="#{auxiliarController.selected.codigoAuxiliar}" title="#{bundle.ViewAuxiliarTitle_codigoAuxiliar}"/>
+                    <h:outputText value="#{bundle.ViewAuxiliarLabel_nombreAuxiliar}"/>
+                    <h:outputText value="#{auxiliarController.selected.nombreAuxiliar}" title="#{bundle.ViewAuxiliarTitle_nombreAuxiliar}"/>
+                    <h:outputText value="#{bundle.ViewAuxiliarLabel_apellidoAuxiliar}"/>
+                    <h:outputText value="#{auxiliarController.selected.apellidoAuxiliar}" title="#{bundle.ViewAuxiliarTitle_apellidoAuxiliar}"/>
+                    <h:outputText value="#{bundle.ViewAuxiliarLabel_telefonoAuxiliar}"/>
+                    <h:outputText value="#{auxiliarController.selected.telefonoAuxiliar}" title="#{bundle.ViewAuxiliarTitle_telefonoAuxiliar}"/>
+                    <h:outputText value="#{bundle.ViewAuxiliarLabel_passwordAux}"/>
+                    <h:outputText value="#{auxiliarController.selected.passwordAux}" title="#{bundle.ViewAuxiliarTitle_passwordAux}"/>
+                    <h:outputText value="#{bundle.ViewAuxiliarLabel_idProgramaAcademico}"/>
+                    <h:outputText value="#{auxiliarController.selected.idProgramaAcademico}" title="#{bundle.ViewAuxiliarTitle_idProgramaAcademico}"/>
+                    <h:outputText value="#{bundle.ViewAuxiliarLabel_idDireccion}"/>
+                    <h:outputText value="#{auxiliarController.selected.idDireccion}" title="#{bundle.ViewAuxiliarTitle_idDireccion}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{auxiliarController.destroyAndView}" value="#{bundle.ViewAuxiliarDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAuxiliarEditLink}"/>
+                <br />
+                <h:commandLink action="#{auxiliarController.prepareCreate}" value="#{bundle.ViewAuxiliarCreateLink}" />
+                <br />
+                <h:commandLink action="#{auxiliarController.prepareList}" value="#{bundle.ViewAuxiliarShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAuxiliarIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

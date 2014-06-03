@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSolicitudAuxiliaresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSolicitudAuxiliaresLabel_solicitudAuxiliaresId}" for="solicitudAuxiliaresId" />
+                    <h:inputText id="solicitudAuxiliaresId" value="#{solicitudAuxiliaresController.selected.solicitudAuxiliaresId}" title="#{bundle.EditSolicitudAuxiliaresTitle_solicitudAuxiliaresId}" required="true" requiredMessage="#{bundle.EditSolicitudAuxiliaresRequiredMessage_solicitudAuxiliaresId}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitudAuxiliaresLabel_cantidadAuxiliares}" for="cantidadAuxiliares" />
+                    <h:inputText id="cantidadAuxiliares" value="#{solicitudAuxiliaresController.selected.cantidadAuxiliares}" title="#{bundle.EditSolicitudAuxiliaresTitle_cantidadAuxiliares}" required="true" requiredMessage="#{bundle.EditSolicitudAuxiliaresRequiredMessage_cantidadAuxiliares}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitudAuxiliaresLabel_cantidadHoras}" for="cantidadHoras" />
+                    <h:inputText id="cantidadHoras" value="#{solicitudAuxiliaresController.selected.cantidadHoras}" title="#{bundle.EditSolicitudAuxiliaresTitle_cantidadHoras}" required="true" requiredMessage="#{bundle.EditSolicitudAuxiliaresRequiredMessage_cantidadHoras}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitudAuxiliaresLabel_descSolicitudAuxiliares}" for="descSolicitudAuxiliares" />
+                    <h:inputText id="descSolicitudAuxiliares" value="#{solicitudAuxiliaresController.selected.descSolicitudAuxiliares}" title="#{bundle.EditSolicitudAuxiliaresTitle_descSolicitudAuxiliares}" required="true" requiredMessage="#{bundle.EditSolicitudAuxiliaresRequiredMessage_descSolicitudAuxiliares}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitudAuxiliaresLabel_fechaCreacion}" for="fechaCreacion" />
+                    <h:inputText id="fechaCreacion" value="#{solicitudAuxiliaresController.selected.fechaCreacion}" title="#{bundle.EditSolicitudAuxiliaresTitle_fechaCreacion}" required="true" requiredMessage="#{bundle.EditSolicitudAuxiliaresRequiredMessage_fechaCreacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditSolicitudAuxiliaresLabel_idSolicitante}" for="idSolicitante" />
+                    <h:selectOneMenu id="idSolicitante" value="#{solicitudAuxiliaresController.selected.idSolicitante}" title="#{bundle.EditSolicitudAuxiliaresTitle_idSolicitante}" required="true" requiredMessage="#{bundle.EditSolicitudAuxiliaresRequiredMessage_idSolicitante}">
+                        <f:selectItems value="#{solicitanteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSolicitudAuxiliaresLabel_convocatoria}" for="convocatoria" />
+                    <h:selectOneMenu id="convocatoria" value="#{solicitudAuxiliaresController.selected.convocatoria}" title="#{bundle.EditSolicitudAuxiliaresTitle_convocatoria}" >
+                        <f:selectItems value="#{convocatoriaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{solicitudAuxiliaresController.update}" value="#{bundle.EditSolicitudAuxiliaresSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSolicitudAuxiliaresViewLink}"/>
+                <br />
+                <h:commandLink action="#{solicitudAuxiliaresController.prepareList}" value="#{bundle.EditSolicitudAuxiliaresShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSolicitudAuxiliaresIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

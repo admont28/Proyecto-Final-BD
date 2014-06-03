@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAuxCumplimientoActividadesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAuxCumplimientoActividadesLabel_idTipoAuxiliar}"/>
+                    <h:outputText value="#{auxCumplimientoActividadesController.selected.idTipoAuxiliar}" title="#{bundle.ViewAuxCumplimientoActividadesTitle_idTipoAuxiliar}"/>
+                    <h:outputText value="#{bundle.ViewAuxCumplimientoActividadesLabel_cumplimientoActividades}"/>
+                    <h:outputText value="#{auxCumplimientoActividadesController.selected.cumplimientoActividades}" title="#{bundle.ViewAuxCumplimientoActividadesTitle_cumplimientoActividades}"/>
+                    <h:outputText value="#{bundle.ViewAuxCumplimientoActividadesLabel_auxiliar}"/>
+                    <h:outputText value="#{auxCumplimientoActividadesController.selected.auxiliar}" title="#{bundle.ViewAuxCumplimientoActividadesTitle_auxiliar}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{auxCumplimientoActividadesController.destroyAndView}" value="#{bundle.ViewAuxCumplimientoActividadesDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAuxCumplimientoActividadesEditLink}"/>
+                <br />
+                <h:commandLink action="#{auxCumplimientoActividadesController.prepareCreate}" value="#{bundle.ViewAuxCumplimientoActividadesCreateLink}" />
+                <br />
+                <h:commandLink action="#{auxCumplimientoActividadesController.prepareList}" value="#{bundle.ViewAuxCumplimientoActividadesShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAuxCumplimientoActividadesIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

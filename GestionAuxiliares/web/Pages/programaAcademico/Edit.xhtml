@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditProgramaAcademicoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditProgramaAcademicoLabel_programaAcademicoId}" for="programaAcademicoId" />
+                    <h:inputText id="programaAcademicoId" value="#{programaAcademicoController.selected.programaAcademicoId}" title="#{bundle.EditProgramaAcademicoTitle_programaAcademicoId}" required="true" requiredMessage="#{bundle.EditProgramaAcademicoRequiredMessage_programaAcademicoId}"/>
+                    <h:outputLabel value="#{bundle.EditProgramaAcademicoLabel_nombrePrograma}" for="nombrePrograma" />
+                    <h:inputText id="nombrePrograma" value="#{programaAcademicoController.selected.nombrePrograma}" title="#{bundle.EditProgramaAcademicoTitle_nombrePrograma}" required="true" requiredMessage="#{bundle.EditProgramaAcademicoRequiredMessage_nombrePrograma}"/>
+                    <h:outputLabel value="#{bundle.EditProgramaAcademicoLabel_idFacultad}" for="idFacultad" />
+                    <h:selectOneMenu id="idFacultad" value="#{programaAcademicoController.selected.idFacultad}" title="#{bundle.EditProgramaAcademicoTitle_idFacultad}" required="true" requiredMessage="#{bundle.EditProgramaAcademicoRequiredMessage_idFacultad}">
+                        <f:selectItems value="#{facultadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditProgramaAcademicoLabel_idConsejoCurricular}" for="idConsejoCurricular" />
+                    <h:selectOneMenu id="idConsejoCurricular" value="#{programaAcademicoController.selected.idConsejoCurricular}" title="#{bundle.EditProgramaAcademicoTitle_idConsejoCurricular}" required="true" requiredMessage="#{bundle.EditProgramaAcademicoRequiredMessage_idConsejoCurricular}">
+                        <f:selectItems value="#{consejoCurricularController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{programaAcademicoController.update}" value="#{bundle.EditProgramaAcademicoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditProgramaAcademicoViewLink}"/>
+                <br />
+                <h:commandLink action="#{programaAcademicoController.prepareList}" value="#{bundle.EditProgramaAcademicoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditProgramaAcademicoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

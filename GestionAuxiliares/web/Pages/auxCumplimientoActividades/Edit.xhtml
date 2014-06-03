@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAuxCumplimientoActividadesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAuxCumplimientoActividadesLabel_idTipoAuxiliar}" for="idTipoAuxiliar" />
+                    <h:selectOneMenu id="idTipoAuxiliar" value="#{auxCumplimientoActividadesController.selected.idTipoAuxiliar}" title="#{bundle.EditAuxCumplimientoActividadesTitle_idTipoAuxiliar}" required="true" requiredMessage="#{bundle.EditAuxCumplimientoActividadesRequiredMessage_idTipoAuxiliar}">
+                        <f:selectItems value="#{tipoAuxiliarController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditAuxCumplimientoActividadesLabel_cumplimientoActividades}" for="cumplimientoActividades" />
+                    <h:selectOneMenu id="cumplimientoActividades" value="#{auxCumplimientoActividadesController.selected.cumplimientoActividades}" title="#{bundle.EditAuxCumplimientoActividadesTitle_cumplimientoActividades}" required="true" requiredMessage="#{bundle.EditAuxCumplimientoActividadesRequiredMessage_cumplimientoActividades}">
+                        <f:selectItems value="#{cumplimientoActividadesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditAuxCumplimientoActividadesLabel_auxiliar}" for="auxiliar" />
+                    <h:selectOneMenu id="auxiliar" value="#{auxCumplimientoActividadesController.selected.auxiliar}" title="#{bundle.EditAuxCumplimientoActividadesTitle_auxiliar}" required="true" requiredMessage="#{bundle.EditAuxCumplimientoActividadesRequiredMessage_auxiliar}">
+                        <f:selectItems value="#{auxiliarController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{auxCumplimientoActividadesController.update}" value="#{bundle.EditAuxCumplimientoActividadesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAuxCumplimientoActividadesViewLink}"/>
+                <br />
+                <h:commandLink action="#{auxCumplimientoActividadesController.prepareList}" value="#{bundle.EditAuxCumplimientoActividadesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAuxCumplimientoActividadesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

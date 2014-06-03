@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListConvocatoriaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListConvocatoriaEmpty}" rendered="#{convocatoriaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{convocatoriaController.items.rowCount > 0}">
+                    <h:outputText value="#{convocatoriaController.pagination.pageFirstItem + 1}..#{convocatoriaController.pagination.pageLastItem + 1}/#{convocatoriaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{convocatoriaController.previous}" value="#{bundle.Previous} #{convocatoriaController.pagination.pageSize}" rendered="#{convocatoriaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{convocatoriaController.next}" value="#{bundle.Next} #{convocatoriaController.pagination.pageSize}" rendered="#{convocatoriaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{convocatoriaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConvocatoriaTitle_convocatoriaId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.convocatoriaId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConvocatoriaTitle_infoAdicionalConvocatoria}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.infoAdicionalConvocatoria}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConvocatoriaTitle_fechaCreacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaCreacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConvocatoriaTitle_fechaApertura}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaApertura}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConvocatoriaTitle_fechaCierre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaCierre}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConvocatoriaTitle_fechaPrueba}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaPrueba}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConvocatoriaTitle_idTipoAuxiliar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTipoAuxiliar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConvocatoriaTitle_idSolicitudAuxiliares}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSolicitudAuxiliares}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConvocatoriaTitle_idProgramaAcademico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idProgramaAcademico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConvocatoriaTitle_evaluacionAuxiliares}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.evaluacionAuxiliares}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

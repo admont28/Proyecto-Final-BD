@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDirectoresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDirectoresLabel_idSolicitante}" for="idSolicitante" />
+                    <h:selectOneMenu id="idSolicitante" value="#{directoresController.selected.idSolicitante}" title="#{bundle.EditDirectoresTitle_idSolicitante}" required="true" requiredMessage="#{bundle.EditDirectoresRequiredMessage_idSolicitante}">
+                        <f:selectItems value="#{solicitanteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDirectoresLabel_programaAcademico}" for="programaAcademico" />
+                    <h:selectOneMenu id="programaAcademico" value="#{directoresController.selected.programaAcademico}" title="#{bundle.EditDirectoresTitle_programaAcademico}" required="true" requiredMessage="#{bundle.EditDirectoresRequiredMessage_programaAcademico}">
+                        <f:selectItems value="#{programaAcademicoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDirectoresLabel_jornada}" for="jornada" />
+                    <h:selectOneMenu id="jornada" value="#{directoresController.selected.jornada}" title="#{bundle.EditDirectoresTitle_jornada}" required="true" requiredMessage="#{bundle.EditDirectoresRequiredMessage_jornada}">
+                        <f:selectItems value="#{jornadaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{directoresController.update}" value="#{bundle.EditDirectoresSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDirectoresViewLink}"/>
+                <br />
+                <h:commandLink action="#{directoresController.prepareList}" value="#{bundle.EditDirectoresShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDirectoresIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

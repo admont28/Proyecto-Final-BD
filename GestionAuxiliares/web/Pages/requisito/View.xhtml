@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRequisitoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRequisitoLabel_requisitoId}"/>
+                    <h:outputText value="#{requisitoController.selected.requisitoId}" title="#{bundle.ViewRequisitoTitle_requisitoId}"/>
+                    <h:outputText value="#{bundle.ViewRequisitoLabel_descripcionRequisito}"/>
+                    <h:outputText value="#{requisitoController.selected.descripcionRequisito}" title="#{bundle.ViewRequisitoTitle_descripcionRequisito}"/>
+                    <h:outputText value="#{bundle.ViewRequisitoLabel_idTipoRequisito}"/>
+                    <h:outputText value="#{requisitoController.selected.idTipoRequisito}" title="#{bundle.ViewRequisitoTitle_idTipoRequisito}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{requisitoController.destroyAndView}" value="#{bundle.ViewRequisitoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewRequisitoEditLink}"/>
+                <br />
+                <h:commandLink action="#{requisitoController.prepareCreate}" value="#{bundle.ViewRequisitoCreateLink}" />
+                <br />
+                <h:commandLink action="#{requisitoController.prepareList}" value="#{bundle.ViewRequisitoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewRequisitoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

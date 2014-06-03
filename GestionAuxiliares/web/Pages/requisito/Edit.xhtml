@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditRequisitoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditRequisitoLabel_requisitoId}" for="requisitoId" />
+                    <h:inputText id="requisitoId" value="#{requisitoController.selected.requisitoId}" title="#{bundle.EditRequisitoTitle_requisitoId}" required="true" requiredMessage="#{bundle.EditRequisitoRequiredMessage_requisitoId}"/>
+                    <h:outputLabel value="#{bundle.EditRequisitoLabel_descripcionRequisito}" for="descripcionRequisito" />
+                    <h:inputText id="descripcionRequisito" value="#{requisitoController.selected.descripcionRequisito}" title="#{bundle.EditRequisitoTitle_descripcionRequisito}" required="true" requiredMessage="#{bundle.EditRequisitoRequiredMessage_descripcionRequisito}"/>
+                    <h:outputLabel value="#{bundle.EditRequisitoLabel_idTipoRequisito}" for="idTipoRequisito" />
+                    <h:selectOneMenu id="idTipoRequisito" value="#{requisitoController.selected.idTipoRequisito}" title="#{bundle.EditRequisitoTitle_idTipoRequisito}" required="true" requiredMessage="#{bundle.EditRequisitoRequiredMessage_idTipoRequisito}">
+                        <f:selectItems value="#{tipoRequisitoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{requisitoController.update}" value="#{bundle.EditRequisitoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditRequisitoViewLink}"/>
+                <br />
+                <h:commandLink action="#{requisitoController.prepareList}" value="#{bundle.EditRequisitoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditRequisitoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

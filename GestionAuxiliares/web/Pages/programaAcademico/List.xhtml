@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListProgramaAcademicoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListProgramaAcademicoEmpty}" rendered="#{programaAcademicoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{programaAcademicoController.items.rowCount > 0}">
+                    <h:outputText value="#{programaAcademicoController.pagination.pageFirstItem + 1}..#{programaAcademicoController.pagination.pageLastItem + 1}/#{programaAcademicoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{programaAcademicoController.previous}" value="#{bundle.Previous} #{programaAcademicoController.pagination.pageSize}" rendered="#{programaAcademicoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{programaAcademicoController.next}" value="#{bundle.Next} #{programaAcademicoController.pagination.pageSize}" rendered="#{programaAcademicoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{programaAcademicoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramaAcademicoTitle_programaAcademicoId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.programaAcademicoId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramaAcademicoTitle_nombrePrograma}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombrePrograma}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramaAcademicoTitle_idFacultad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idFacultad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramaAcademicoTitle_idConsejoCurricular}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idConsejoCurricular}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{programaAcademicoController.prepareView}" value="#{bundle.ListProgramaAcademicoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{programaAcademicoController.prepareEdit}" value="#{bundle.ListProgramaAcademicoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{programaAcademicoController.destroy}" value="#{bundle.ListProgramaAcademicoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{programaAcademicoController.prepareCreate}" value="#{bundle.ListProgramaAcademicoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListProgramaAcademicoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

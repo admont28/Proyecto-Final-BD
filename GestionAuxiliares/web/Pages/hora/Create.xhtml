@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateHoraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateHoraLabel_horaPK_horaInicio}" for="horaPK_horaInicio" />
+                    <h:inputText id="horaPK_horaInicio" value="#{horaController.selected.horaPK.horaInicio}" title="#{bundle.CreateHoraTitle_horaPK_horaInicio}" required="true" requiredMessage="#{bundle.CreateHoraRequiredMessage_horaPK_horaInicio}"/>
+                    <h:outputLabel value="#{bundle.CreateHoraLabel_horaFin}" for="horaFin" />
+                    <h:inputText id="horaFin" value="#{horaController.selected.horaFin}" title="#{bundle.CreateHoraTitle_horaFin}" required="true" requiredMessage="#{bundle.CreateHoraRequiredMessage_horaFin}"/>
+                    <h:outputLabel value="#{bundle.CreateHoraLabel_fechaHorario}" for="fechaHorario" />
+                    <h:selectOneMenu id="fechaHorario" value="#{horaController.selected.fechaHorario}" title="#{bundle.CreateHoraTitle_fechaHorario}" required="true" requiredMessage="#{bundle.CreateHoraRequiredMessage_fechaHorario}">
+                        <f:selectItems value="#{fechaHorarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{horaController.create}" value="#{bundle.CreateHoraSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{horaController.prepareList}" value="#{bundle.CreateHoraShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateHoraIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

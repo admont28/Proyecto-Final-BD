@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDireccionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDireccionLabel_direccionId}" for="direccionId" />
+                    <h:inputText id="direccionId" value="#{direccionController.selected.direccionId}" title="#{bundle.EditDireccionTitle_direccionId}" required="true" requiredMessage="#{bundle.EditDireccionRequiredMessage_direccionId}"/>
+                    <h:outputLabel value="#{bundle.EditDireccionLabel_calle}" for="calle" />
+                    <h:inputText id="calle" value="#{direccionController.selected.calle}" title="#{bundle.EditDireccionTitle_calle}" required="true" requiredMessage="#{bundle.EditDireccionRequiredMessage_calle}"/>
+                    <h:outputLabel value="#{bundle.EditDireccionLabel_carrera}" for="carrera" />
+                    <h:inputText id="carrera" value="#{direccionController.selected.carrera}" title="#{bundle.EditDireccionTitle_carrera}" required="true" requiredMessage="#{bundle.EditDireccionRequiredMessage_carrera}"/>
+                    <h:outputLabel value="#{bundle.EditDireccionLabel_numero}" for="numero" />
+                    <h:inputText id="numero" value="#{direccionController.selected.numero}" title="#{bundle.EditDireccionTitle_numero}" required="true" requiredMessage="#{bundle.EditDireccionRequiredMessage_numero}"/>
+                    <h:outputLabel value="#{bundle.EditDireccionLabel_idCiudad}" for="idCiudad" />
+                    <h:selectOneMenu id="idCiudad" value="#{direccionController.selected.idCiudad}" title="#{bundle.EditDireccionTitle_idCiudad}" required="true" requiredMessage="#{bundle.EditDireccionRequiredMessage_idCiudad}">
+                        <f:selectItems value="#{ciudadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDireccionLabel_universidad}" for="universidad" />
+                    <h:selectOneMenu id="universidad" value="#{direccionController.selected.universidad}" title="#{bundle.EditDireccionTitle_universidad}" >
+                        <f:selectItems value="#{universidadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{direccionController.update}" value="#{bundle.EditDireccionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDireccionViewLink}"/>
+                <br />
+                <h:commandLink action="#{direccionController.prepareList}" value="#{bundle.EditDireccionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDireccionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

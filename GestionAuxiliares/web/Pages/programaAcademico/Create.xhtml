@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProgramaAcademicoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateProgramaAcademicoLabel_programaAcademicoId}" for="programaAcademicoId" />
+                    <h:inputText id="programaAcademicoId" value="#{programaAcademicoController.selected.programaAcademicoId}" title="#{bundle.CreateProgramaAcademicoTitle_programaAcademicoId}" required="true" requiredMessage="#{bundle.CreateProgramaAcademicoRequiredMessage_programaAcademicoId}"/>
+                    <h:outputLabel value="#{bundle.CreateProgramaAcademicoLabel_nombrePrograma}" for="nombrePrograma" />
+                    <h:inputText id="nombrePrograma" value="#{programaAcademicoController.selected.nombrePrograma}" title="#{bundle.CreateProgramaAcademicoTitle_nombrePrograma}" required="true" requiredMessage="#{bundle.CreateProgramaAcademicoRequiredMessage_nombrePrograma}"/>
+                    <h:outputLabel value="#{bundle.CreateProgramaAcademicoLabel_idFacultad}" for="idFacultad" />
+                    <h:selectOneMenu id="idFacultad" value="#{programaAcademicoController.selected.idFacultad}" title="#{bundle.CreateProgramaAcademicoTitle_idFacultad}" required="true" requiredMessage="#{bundle.CreateProgramaAcademicoRequiredMessage_idFacultad}">
+                        <f:selectItems value="#{facultadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateProgramaAcademicoLabel_idConsejoCurricular}" for="idConsejoCurricular" />
+                    <h:selectOneMenu id="idConsejoCurricular" value="#{programaAcademicoController.selected.idConsejoCurricular}" title="#{bundle.CreateProgramaAcademicoTitle_idConsejoCurricular}" required="true" requiredMessage="#{bundle.CreateProgramaAcademicoRequiredMessage_idConsejoCurricular}">
+                        <f:selectItems value="#{consejoCurricularController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{programaAcademicoController.create}" value="#{bundle.CreateProgramaAcademicoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{programaAcademicoController.prepareList}" value="#{bundle.CreateProgramaAcademicoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateProgramaAcademicoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

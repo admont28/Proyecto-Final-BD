@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAuxiliarTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAuxiliarLabel_auxiliarId}" for="auxiliarId" />
+                    <h:inputText id="auxiliarId" value="#{auxiliarController.selected.auxiliarId}" title="#{bundle.CreateAuxiliarTitle_auxiliarId}" required="true" requiredMessage="#{bundle.CreateAuxiliarRequiredMessage_auxiliarId}"/>
+                    <h:outputLabel value="#{bundle.CreateAuxiliarLabel_codigoAuxiliar}" for="codigoAuxiliar" />
+                    <h:inputText id="codigoAuxiliar" value="#{auxiliarController.selected.codigoAuxiliar}" title="#{bundle.CreateAuxiliarTitle_codigoAuxiliar}" required="true" requiredMessage="#{bundle.CreateAuxiliarRequiredMessage_codigoAuxiliar}"/>
+                    <h:outputLabel value="#{bundle.CreateAuxiliarLabel_nombreAuxiliar}" for="nombreAuxiliar" />
+                    <h:inputText id="nombreAuxiliar" value="#{auxiliarController.selected.nombreAuxiliar}" title="#{bundle.CreateAuxiliarTitle_nombreAuxiliar}" required="true" requiredMessage="#{bundle.CreateAuxiliarRequiredMessage_nombreAuxiliar}"/>
+                    <h:outputLabel value="#{bundle.CreateAuxiliarLabel_apellidoAuxiliar}" for="apellidoAuxiliar" />
+                    <h:inputText id="apellidoAuxiliar" value="#{auxiliarController.selected.apellidoAuxiliar}" title="#{bundle.CreateAuxiliarTitle_apellidoAuxiliar}" required="true" requiredMessage="#{bundle.CreateAuxiliarRequiredMessage_apellidoAuxiliar}"/>
+                    <h:outputLabel value="#{bundle.CreateAuxiliarLabel_telefonoAuxiliar}" for="telefonoAuxiliar" />
+                    <h:inputText id="telefonoAuxiliar" value="#{auxiliarController.selected.telefonoAuxiliar}" title="#{bundle.CreateAuxiliarTitle_telefonoAuxiliar}" required="true" requiredMessage="#{bundle.CreateAuxiliarRequiredMessage_telefonoAuxiliar}"/>
+                    <h:outputLabel value="#{bundle.CreateAuxiliarLabel_passwordAux}" for="passwordAux" />
+                    <h:inputText id="passwordAux" value="#{auxiliarController.selected.passwordAux}" title="#{bundle.CreateAuxiliarTitle_passwordAux}" required="true" requiredMessage="#{bundle.CreateAuxiliarRequiredMessage_passwordAux}"/>
+                    <h:outputLabel value="#{bundle.CreateAuxiliarLabel_idProgramaAcademico}" for="idProgramaAcademico" />
+                    <h:selectOneMenu id="idProgramaAcademico" value="#{auxiliarController.selected.idProgramaAcademico}" title="#{bundle.CreateAuxiliarTitle_idProgramaAcademico}" required="true" requiredMessage="#{bundle.CreateAuxiliarRequiredMessage_idProgramaAcademico}">
+                        <f:selectItems value="#{programaAcademicoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateAuxiliarLabel_idDireccion}" for="idDireccion" />
+                    <h:selectOneMenu id="idDireccion" value="#{auxiliarController.selected.idDireccion}" title="#{bundle.CreateAuxiliarTitle_idDireccion}" required="true" requiredMessage="#{bundle.CreateAuxiliarRequiredMessage_idDireccion}">
+                        <f:selectItems value="#{direccionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{auxiliarController.create}" value="#{bundle.CreateAuxiliarSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{auxiliarController.prepareList}" value="#{bundle.CreateAuxiliarShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAuxiliarIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

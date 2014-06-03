@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEvaluacionAuxiliaresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEvaluacionAuxiliaresLabel_evaluacionAuxiliaresId}" for="evaluacionAuxiliaresId" />
+                    <h:inputText id="evaluacionAuxiliaresId" value="#{evaluacionAuxiliaresController.selected.evaluacionAuxiliaresId}" title="#{bundle.EditEvaluacionAuxiliaresTitle_evaluacionAuxiliaresId}" required="true" requiredMessage="#{bundle.EditEvaluacionAuxiliaresRequiredMessage_evaluacionAuxiliaresId}"/>
+                    <h:outputLabel value="#{bundle.EditEvaluacionAuxiliaresLabel_descEvaluacionAuxiliares}" for="descEvaluacionAuxiliares" />
+                    <h:inputText id="descEvaluacionAuxiliares" value="#{evaluacionAuxiliaresController.selected.descEvaluacionAuxiliares}" title="#{bundle.EditEvaluacionAuxiliaresTitle_descEvaluacionAuxiliares}" required="true" requiredMessage="#{bundle.EditEvaluacionAuxiliaresRequiredMessage_descEvaluacionAuxiliares}"/>
+                    <h:outputLabel value="#{bundle.EditEvaluacionAuxiliaresLabel_fechaCreacion}" for="fechaCreacion" />
+                    <h:inputText id="fechaCreacion" value="#{evaluacionAuxiliaresController.selected.fechaCreacion}" title="#{bundle.EditEvaluacionAuxiliaresTitle_fechaCreacion}" required="true" requiredMessage="#{bundle.EditEvaluacionAuxiliaresRequiredMessage_fechaCreacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditEvaluacionAuxiliaresLabel_idSolicitante}" for="idSolicitante" />
+                    <h:selectOneMenu id="idSolicitante" value="#{evaluacionAuxiliaresController.selected.idSolicitante}" title="#{bundle.EditEvaluacionAuxiliaresTitle_idSolicitante}" required="true" requiredMessage="#{bundle.EditEvaluacionAuxiliaresRequiredMessage_idSolicitante}">
+                        <f:selectItems value="#{solicitanteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEvaluacionAuxiliaresLabel_idConvocatoria}" for="idConvocatoria" />
+                    <h:selectOneMenu id="idConvocatoria" value="#{evaluacionAuxiliaresController.selected.idConvocatoria}" title="#{bundle.EditEvaluacionAuxiliaresTitle_idConvocatoria}" required="true" requiredMessage="#{bundle.EditEvaluacionAuxiliaresRequiredMessage_idConvocatoria}">
+                        <f:selectItems value="#{convocatoriaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{evaluacionAuxiliaresController.update}" value="#{bundle.EditEvaluacionAuxiliaresSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEvaluacionAuxiliaresViewLink}"/>
+                <br />
+                <h:commandLink action="#{evaluacionAuxiliaresController.prepareList}" value="#{bundle.EditEvaluacionAuxiliaresShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEvaluacionAuxiliaresIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

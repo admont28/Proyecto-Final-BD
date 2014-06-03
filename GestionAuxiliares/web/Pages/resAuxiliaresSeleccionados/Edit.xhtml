@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditResAuxiliaresSeleccionadosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditResAuxiliaresSeleccionadosLabel_resAuxSelId}" for="resAuxSelId" />
+                    <h:inputText id="resAuxSelId" value="#{resAuxiliaresSeleccionadosController.selected.resAuxSelId}" title="#{bundle.EditResAuxiliaresSeleccionadosTitle_resAuxSelId}" required="true" requiredMessage="#{bundle.EditResAuxiliaresSeleccionadosRequiredMessage_resAuxSelId}"/>
+                    <h:outputLabel value="#{bundle.EditResAuxiliaresSeleccionadosLabel_descResAuxSel}" for="descResAuxSel" />
+                    <h:inputText id="descResAuxSel" value="#{resAuxiliaresSeleccionadosController.selected.descResAuxSel}" title="#{bundle.EditResAuxiliaresSeleccionadosTitle_descResAuxSel}" required="true" requiredMessage="#{bundle.EditResAuxiliaresSeleccionadosRequiredMessage_descResAuxSel}"/>
+                    <h:outputLabel value="#{bundle.EditResAuxiliaresSeleccionadosLabel_fechaCreaResAuxSel}" for="fechaCreaResAuxSel" />
+                    <h:inputText id="fechaCreaResAuxSel" value="#{resAuxiliaresSeleccionadosController.selected.fechaCreaResAuxSel}" title="#{bundle.EditResAuxiliaresSeleccionadosTitle_fechaCreaResAuxSel}" required="true" requiredMessage="#{bundle.EditResAuxiliaresSeleccionadosRequiredMessage_fechaCreaResAuxSel}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditResAuxiliaresSeleccionadosLabel_idSolicitante}" for="idSolicitante" />
+                    <h:selectOneMenu id="idSolicitante" value="#{resAuxiliaresSeleccionadosController.selected.idSolicitante}" title="#{bundle.EditResAuxiliaresSeleccionadosTitle_idSolicitante}" required="true" requiredMessage="#{bundle.EditResAuxiliaresSeleccionadosRequiredMessage_idSolicitante}">
+                        <f:selectItems value="#{solicitanteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{resAuxiliaresSeleccionadosController.update}" value="#{bundle.EditResAuxiliaresSeleccionadosSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditResAuxiliaresSeleccionadosViewLink}"/>
+                <br />
+                <h:commandLink action="#{resAuxiliaresSeleccionadosController.prepareList}" value="#{bundle.EditResAuxiliaresSeleccionadosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditResAuxiliaresSeleccionadosIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

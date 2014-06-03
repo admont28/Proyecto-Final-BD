@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditIncAuxAuxiliarTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditIncAuxAuxiliarLabel_idSolicitante}" for="idSolicitante" />
+                    <h:selectOneMenu id="idSolicitante" value="#{incAuxAuxiliarController.selected.idSolicitante}" title="#{bundle.EditIncAuxAuxiliarTitle_idSolicitante}" required="true" requiredMessage="#{bundle.EditIncAuxAuxiliarRequiredMessage_idSolicitante}">
+                        <f:selectItems value="#{solicitanteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditIncAuxAuxiliarLabel_inconformidadAuxiliares}" for="inconformidadAuxiliares" />
+                    <h:selectOneMenu id="inconformidadAuxiliares" value="#{incAuxAuxiliarController.selected.inconformidadAuxiliares}" title="#{bundle.EditIncAuxAuxiliarTitle_inconformidadAuxiliares}" required="true" requiredMessage="#{bundle.EditIncAuxAuxiliarRequiredMessage_inconformidadAuxiliares}">
+                        <f:selectItems value="#{inconformidadAuxiliaresController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditIncAuxAuxiliarLabel_auxiliar}" for="auxiliar" />
+                    <h:selectOneMenu id="auxiliar" value="#{incAuxAuxiliarController.selected.auxiliar}" title="#{bundle.EditIncAuxAuxiliarTitle_auxiliar}" required="true" requiredMessage="#{bundle.EditIncAuxAuxiliarRequiredMessage_auxiliar}">
+                        <f:selectItems value="#{auxiliarController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{incAuxAuxiliarController.update}" value="#{bundle.EditIncAuxAuxiliarSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditIncAuxAuxiliarViewLink}"/>
+                <br />
+                <h:commandLink action="#{incAuxAuxiliarController.prepareList}" value="#{bundle.EditIncAuxAuxiliarShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditIncAuxAuxiliarIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

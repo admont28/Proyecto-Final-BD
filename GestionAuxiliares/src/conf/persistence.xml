@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="GestionAuxiliaresPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>Entities.AuxCumplimientoActividades</class>
+    <class>Entities.Area</class>
+    <class>Entities.TipoRequisito</class>
+    <class>Entities.InscripcionConvocatoria</class>
+    <class>Entities.TipoAuxiliar</class>
+    <class>Entities.Cargo</class>
+    <class>Entities.IncAuxAuxiliar</class>
+    <class>Entities.ResAuxiliaresSeleccionados</class>
+    <class>Entities.InconformidadAuxiliares</class>
+    <class>Entities.Secretaria</class>
+    <class>Entities.Universidad</class>
+    <class>Entities.HorarioActividades</class>
+    <class>Entities.ConsejoCurricular</class>
+    <class>Entities.Convocatoria</class>
+    <class>Entities.DetalleResolucion</class>
+    <class>Entities.Direccion</class>
+    <class>Entities.Requisito</class>
+    <class>Entities.Auxiliar</class>
+    <class>Entities.Ciudad</class>
+    <class>Entities.CumplimientoActividades</class>
+    <class>Entities.Directores</class>
+    <class>Entities.SolicitudAuxiliares</class>
+    <class>Entities.FechaHorario</class>
+    <class>Entities.Hora</class>
+    <class>Entities.Jornada</class>
+    <class>Entities.Solicitante</class>
+    <class>Entities.EvaluacionAuxiliares</class>
+    <class>Entities.SeleccionAuxiliares</class>
+    <class>Entities.ProgramaAcademico</class>
+    <class>Entities.Facultad</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@192.168.1.7:1521:XE"/>
+      <property name="javax.persistence.jdbc.password" value="PROYECTO_FINAL"/>
+      <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
+      <property name="javax.persistence.jdbc.user" value="PROYECTO_FINAL"/>
+    </properties>
+  </persistence-unit>
+</persistence>

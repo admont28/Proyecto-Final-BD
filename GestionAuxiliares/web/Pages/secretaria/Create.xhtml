@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSecretariaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSecretariaLabel_secretariaId}" for="secretariaId" />
+                    <h:inputText id="secretariaId" value="#{secretariaController.selected.secretariaId}" title="#{bundle.CreateSecretariaTitle_secretariaId}" required="true" requiredMessage="#{bundle.CreateSecretariaRequiredMessage_secretariaId}"/>
+                    <h:outputLabel value="#{bundle.CreateSecretariaLabel_nombreSecretaria}" for="nombreSecretaria" />
+                    <h:inputText id="nombreSecretaria" value="#{secretariaController.selected.nombreSecretaria}" title="#{bundle.CreateSecretariaTitle_nombreSecretaria}" required="true" requiredMessage="#{bundle.CreateSecretariaRequiredMessage_nombreSecretaria}"/>
+                    <h:outputLabel value="#{bundle.CreateSecretariaLabel_apellidoSecretaria}" for="apellidoSecretaria" />
+                    <h:inputText id="apellidoSecretaria" value="#{secretariaController.selected.apellidoSecretaria}" title="#{bundle.CreateSecretariaTitle_apellidoSecretaria}" required="true" requiredMessage="#{bundle.CreateSecretariaRequiredMessage_apellidoSecretaria}"/>
+                    <h:outputLabel value="#{bundle.CreateSecretariaLabel_telefonoSecretaria}" for="telefonoSecretaria" />
+                    <h:inputText id="telefonoSecretaria" value="#{secretariaController.selected.telefonoSecretaria}" title="#{bundle.CreateSecretariaTitle_telefonoSecretaria}" required="true" requiredMessage="#{bundle.CreateSecretariaRequiredMessage_telefonoSecretaria}"/>
+                    <h:outputLabel value="#{bundle.CreateSecretariaLabel_passwordSecretaria}" for="passwordSecretaria" />
+                    <h:inputText id="passwordSecretaria" value="#{secretariaController.selected.passwordSecretaria}" title="#{bundle.CreateSecretariaTitle_passwordSecretaria}" required="true" requiredMessage="#{bundle.CreateSecretariaRequiredMessage_passwordSecretaria}"/>
+                    <h:outputLabel value="#{bundle.CreateSecretariaLabel_consejoCurricular}" for="consejoCurricular" />
+                    <h:selectOneMenu id="consejoCurricular" value="#{secretariaController.selected.consejoCurricular}" title="#{bundle.CreateSecretariaTitle_consejoCurricular}" >
+                        <f:selectItems value="#{consejoCurricularController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{secretariaController.create}" value="#{bundle.CreateSecretariaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{secretariaController.prepareList}" value="#{bundle.CreateSecretariaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSecretariaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

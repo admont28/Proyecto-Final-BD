@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSolicitanteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSolicitanteLabel_solicitanteId}" for="solicitanteId" />
+                    <h:inputText id="solicitanteId" value="#{solicitanteController.selected.solicitanteId}" title="#{bundle.EditSolicitanteTitle_solicitanteId}" required="true" requiredMessage="#{bundle.EditSolicitanteRequiredMessage_solicitanteId}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitanteLabel_nombreSolicitante}" for="nombreSolicitante" />
+                    <h:inputText id="nombreSolicitante" value="#{solicitanteController.selected.nombreSolicitante}" title="#{bundle.EditSolicitanteTitle_nombreSolicitante}" required="true" requiredMessage="#{bundle.EditSolicitanteRequiredMessage_nombreSolicitante}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitanteLabel_apellidoSolicitante}" for="apellidoSolicitante" />
+                    <h:inputText id="apellidoSolicitante" value="#{solicitanteController.selected.apellidoSolicitante}" title="#{bundle.EditSolicitanteTitle_apellidoSolicitante}" required="true" requiredMessage="#{bundle.EditSolicitanteRequiredMessage_apellidoSolicitante}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitanteLabel_telefonoSolicitante}" for="telefonoSolicitante" />
+                    <h:inputText id="telefonoSolicitante" value="#{solicitanteController.selected.telefonoSolicitante}" title="#{bundle.EditSolicitanteTitle_telefonoSolicitante}" required="true" requiredMessage="#{bundle.EditSolicitanteRequiredMessage_telefonoSolicitante}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitanteLabel_passwordSolicitante}" for="passwordSolicitante" />
+                    <h:inputText id="passwordSolicitante" value="#{solicitanteController.selected.passwordSolicitante}" title="#{bundle.EditSolicitanteTitle_passwordSolicitante}" required="true" requiredMessage="#{bundle.EditSolicitanteRequiredMessage_passwordSolicitante}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitanteLabel_directores}" for="directores" />
+                    <h:selectOneMenu id="directores" value="#{solicitanteController.selected.directores}" title="#{bundle.EditSolicitanteTitle_directores}" >
+                        <f:selectItems value="#{directoresController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSolicitanteLabel_idProgramaAcademico}" for="idProgramaAcademico" />
+                    <h:selectOneMenu id="idProgramaAcademico" value="#{solicitanteController.selected.idProgramaAcademico}" title="#{bundle.EditSolicitanteTitle_idProgramaAcademico}" required="true" requiredMessage="#{bundle.EditSolicitanteRequiredMessage_idProgramaAcademico}">
+                        <f:selectItems value="#{programaAcademicoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSolicitanteLabel_idDireccion}" for="idDireccion" />
+                    <h:selectOneMenu id="idDireccion" value="#{solicitanteController.selected.idDireccion}" title="#{bundle.EditSolicitanteTitle_idDireccion}" required="true" requiredMessage="#{bundle.EditSolicitanteRequiredMessage_idDireccion}">
+                        <f:selectItems value="#{direccionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSolicitanteLabel_idConsejoCurricular}" for="idConsejoCurricular" />
+                    <h:selectOneMenu id="idConsejoCurricular" value="#{solicitanteController.selected.idConsejoCurricular}" title="#{bundle.EditSolicitanteTitle_idConsejoCurricular}" >
+                        <f:selectItems value="#{consejoCurricularController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSolicitanteLabel_idCargo}" for="idCargo" />
+                    <h:selectOneMenu id="idCargo" value="#{solicitanteController.selected.idCargo}" title="#{bundle.EditSolicitanteTitle_idCargo}" required="true" requiredMessage="#{bundle.EditSolicitanteRequiredMessage_idCargo}">
+                        <f:selectItems value="#{cargoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSolicitanteLabel_idArea}" for="idArea" />
+                    <h:selectOneMenu id="idArea" value="#{solicitanteController.selected.idArea}" title="#{bundle.EditSolicitanteTitle_idArea}" required="true" requiredMessage="#{bundle.EditSolicitanteRequiredMessage_idArea}">
+                        <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{solicitanteController.update}" value="#{bundle.EditSolicitanteSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSolicitanteViewLink}"/>
+                <br />
+                <h:commandLink action="#{solicitanteController.prepareList}" value="#{bundle.EditSolicitanteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSolicitanteIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSolicitudAuxiliaresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSolicitudAuxiliaresLabel_solicitudAuxiliaresId}"/>
+                    <h:outputText value="#{solicitudAuxiliaresController.selected.solicitudAuxiliaresId}" title="#{bundle.ViewSolicitudAuxiliaresTitle_solicitudAuxiliaresId}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudAuxiliaresLabel_cantidadAuxiliares}"/>
+                    <h:outputText value="#{solicitudAuxiliaresController.selected.cantidadAuxiliares}" title="#{bundle.ViewSolicitudAuxiliaresTitle_cantidadAuxiliares}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudAuxiliaresLabel_cantidadHoras}"/>
+                    <h:outputText value="#{solicitudAuxiliaresController.selected.cantidadHoras}" title="#{bundle.ViewSolicitudAuxiliaresTitle_cantidadHoras}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudAuxiliaresLabel_descSolicitudAuxiliares}"/>
+                    <h:outputText value="#{solicitudAuxiliaresController.selected.descSolicitudAuxiliares}" title="#{bundle.ViewSolicitudAuxiliaresTitle_descSolicitudAuxiliares}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudAuxiliaresLabel_fechaCreacion}"/>
+                    <h:outputText value="#{solicitudAuxiliaresController.selected.fechaCreacion}" title="#{bundle.ViewSolicitudAuxiliaresTitle_fechaCreacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewSolicitudAuxiliaresLabel_idSolicitante}"/>
+                    <h:outputText value="#{solicitudAuxiliaresController.selected.idSolicitante}" title="#{bundle.ViewSolicitudAuxiliaresTitle_idSolicitante}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudAuxiliaresLabel_convocatoria}"/>
+                    <h:outputText value="#{solicitudAuxiliaresController.selected.convocatoria}" title="#{bundle.ViewSolicitudAuxiliaresTitle_convocatoria}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{solicitudAuxiliaresController.destroyAndView}" value="#{bundle.ViewSolicitudAuxiliaresDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSolicitudAuxiliaresEditLink}"/>
+                <br />
+                <h:commandLink action="#{solicitudAuxiliaresController.prepareCreate}" value="#{bundle.ViewSolicitudAuxiliaresCreateLink}" />
+                <br />
+                <h:commandLink action="#{solicitudAuxiliaresController.prepareList}" value="#{bundle.ViewSolicitudAuxiliaresShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSolicitudAuxiliaresIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

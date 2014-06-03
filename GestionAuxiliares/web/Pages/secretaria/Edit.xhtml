@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSecretariaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSecretariaLabel_secretariaId}" for="secretariaId" />
+                    <h:inputText id="secretariaId" value="#{secretariaController.selected.secretariaId}" title="#{bundle.EditSecretariaTitle_secretariaId}" required="true" requiredMessage="#{bundle.EditSecretariaRequiredMessage_secretariaId}"/>
+                    <h:outputLabel value="#{bundle.EditSecretariaLabel_nombreSecretaria}" for="nombreSecretaria" />
+                    <h:inputText id="nombreSecretaria" value="#{secretariaController.selected.nombreSecretaria}" title="#{bundle.EditSecretariaTitle_nombreSecretaria}" required="true" requiredMessage="#{bundle.EditSecretariaRequiredMessage_nombreSecretaria}"/>
+                    <h:outputLabel value="#{bundle.EditSecretariaLabel_apellidoSecretaria}" for="apellidoSecretaria" />
+                    <h:inputText id="apellidoSecretaria" value="#{secretariaController.selected.apellidoSecretaria}" title="#{bundle.EditSecretariaTitle_apellidoSecretaria}" required="true" requiredMessage="#{bundle.EditSecretariaRequiredMessage_apellidoSecretaria}"/>
+                    <h:outputLabel value="#{bundle.EditSecretariaLabel_telefonoSecretaria}" for="telefonoSecretaria" />
+                    <h:inputText id="telefonoSecretaria" value="#{secretariaController.selected.telefonoSecretaria}" title="#{bundle.EditSecretariaTitle_telefonoSecretaria}" required="true" requiredMessage="#{bundle.EditSecretariaRequiredMessage_telefonoSecretaria}"/>
+                    <h:outputLabel value="#{bundle.EditSecretariaLabel_passwordSecretaria}" for="passwordSecretaria" />
+                    <h:inputText id="passwordSecretaria" value="#{secretariaController.selected.passwordSecretaria}" title="#{bundle.EditSecretariaTitle_passwordSecretaria}" required="true" requiredMessage="#{bundle.EditSecretariaRequiredMessage_passwordSecretaria}"/>
+                    <h:outputLabel value="#{bundle.EditSecretariaLabel_consejoCurricular}" for="consejoCurricular" />
+                    <h:selectOneMenu id="consejoCurricular" value="#{secretariaController.selected.consejoCurricular}" title="#{bundle.EditSecretariaTitle_consejoCurricular}" >
+                        <f:selectItems value="#{consejoCurricularController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{secretariaController.update}" value="#{bundle.EditSecretariaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSecretariaViewLink}"/>
+                <br />
+                <h:commandLink action="#{secretariaController.prepareList}" value="#{bundle.EditSecretariaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSecretariaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

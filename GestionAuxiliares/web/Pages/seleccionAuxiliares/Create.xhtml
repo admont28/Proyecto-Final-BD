@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSeleccionAuxiliaresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSeleccionAuxiliaresLabel_calificacion}" for="calificacion" />
+                    <h:inputText id="calificacion" value="#{seleccionAuxiliaresController.selected.calificacion}" title="#{bundle.CreateSeleccionAuxiliaresTitle_calificacion}" required="true" requiredMessage="#{bundle.CreateSeleccionAuxiliaresRequiredMessage_calificacion}"/>
+                    <h:outputLabel value="#{bundle.CreateSeleccionAuxiliaresLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{seleccionAuxiliaresController.selected.estado}" title="#{bundle.CreateSeleccionAuxiliaresTitle_estado}" required="true" requiredMessage="#{bundle.CreateSeleccionAuxiliaresRequiredMessage_estado}"/>
+                    <h:outputLabel value="#{bundle.CreateSeleccionAuxiliaresLabel_promedio}" for="promedio" />
+                    <h:inputText id="promedio" value="#{seleccionAuxiliaresController.selected.promedio}" title="#{bundle.CreateSeleccionAuxiliaresTitle_promedio}" required="true" requiredMessage="#{bundle.CreateSeleccionAuxiliaresRequiredMessage_promedio}"/>
+                    <h:outputLabel value="#{bundle.CreateSeleccionAuxiliaresLabel_evaluacionAuxiliares}" for="evaluacionAuxiliares" />
+                    <h:selectOneMenu id="evaluacionAuxiliares" value="#{seleccionAuxiliaresController.selected.evaluacionAuxiliares}" title="#{bundle.CreateSeleccionAuxiliaresTitle_evaluacionAuxiliares}" required="true" requiredMessage="#{bundle.CreateSeleccionAuxiliaresRequiredMessage_evaluacionAuxiliares}">
+                        <f:selectItems value="#{evaluacionAuxiliaresController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSeleccionAuxiliaresLabel_auxiliar}" for="auxiliar" />
+                    <h:selectOneMenu id="auxiliar" value="#{seleccionAuxiliaresController.selected.auxiliar}" title="#{bundle.CreateSeleccionAuxiliaresTitle_auxiliar}" required="true" requiredMessage="#{bundle.CreateSeleccionAuxiliaresRequiredMessage_auxiliar}">
+                        <f:selectItems value="#{auxiliarController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{seleccionAuxiliaresController.create}" value="#{bundle.CreateSeleccionAuxiliaresSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{seleccionAuxiliaresController.prepareList}" value="#{bundle.CreateSeleccionAuxiliaresShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSeleccionAuxiliaresIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

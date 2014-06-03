@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewInscripcionConvocatoriaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewInscripcionConvocatoriaLabel_fechaInscripcionConvocatoria}"/>
+                    <h:outputText value="#{inscripcionConvocatoriaController.selected.fechaInscripcionConvocatoria}" title="#{bundle.ViewInscripcionConvocatoriaTitle_fechaInscripcionConvocatoria}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewInscripcionConvocatoriaLabel_convocatoria}"/>
+                    <h:outputText value="#{inscripcionConvocatoriaController.selected.convocatoria}" title="#{bundle.ViewInscripcionConvocatoriaTitle_convocatoria}"/>
+                    <h:outputText value="#{bundle.ViewInscripcionConvocatoriaLabel_auxiliar}"/>
+                    <h:outputText value="#{inscripcionConvocatoriaController.selected.auxiliar}" title="#{bundle.ViewInscripcionConvocatoriaTitle_auxiliar}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{inscripcionConvocatoriaController.destroyAndView}" value="#{bundle.ViewInscripcionConvocatoriaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewInscripcionConvocatoriaEditLink}"/>
+                <br />
+                <h:commandLink action="#{inscripcionConvocatoriaController.prepareCreate}" value="#{bundle.ViewInscripcionConvocatoriaCreateLink}" />
+                <br />
+                <h:commandLink action="#{inscripcionConvocatoriaController.prepareList}" value="#{bundle.ViewInscripcionConvocatoriaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewInscripcionConvocatoriaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

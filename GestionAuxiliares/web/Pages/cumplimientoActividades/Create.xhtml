@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCumplimientoActividadesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCumplimientoActividadesLabel_cumpActId}" for="cumpActId" />
+                    <h:inputText id="cumpActId" value="#{cumplimientoActividadesController.selected.cumpActId}" title="#{bundle.CreateCumplimientoActividadesTitle_cumpActId}" required="true" requiredMessage="#{bundle.CreateCumplimientoActividadesRequiredMessage_cumpActId}"/>
+                    <h:outputLabel value="#{bundle.CreateCumplimientoActividadesLabel_descCumpAct}" for="descCumpAct" />
+                    <h:inputText id="descCumpAct" value="#{cumplimientoActividadesController.selected.descCumpAct}" title="#{bundle.CreateCumplimientoActividadesTitle_descCumpAct}" required="true" requiredMessage="#{bundle.CreateCumplimientoActividadesRequiredMessage_descCumpAct}"/>
+                    <h:outputLabel value="#{bundle.CreateCumplimientoActividadesLabel_fechaCreacionCumpAct}" for="fechaCreacionCumpAct" />
+                    <h:inputText id="fechaCreacionCumpAct" value="#{cumplimientoActividadesController.selected.fechaCreacionCumpAct}" title="#{bundle.CreateCumplimientoActividadesTitle_fechaCreacionCumpAct}" required="true" requiredMessage="#{bundle.CreateCumplimientoActividadesRequiredMessage_fechaCreacionCumpAct}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateCumplimientoActividadesLabel_idSolicitante}" for="idSolicitante" />
+                    <h:selectOneMenu id="idSolicitante" value="#{cumplimientoActividadesController.selected.idSolicitante}" title="#{bundle.CreateCumplimientoActividadesTitle_idSolicitante}" required="true" requiredMessage="#{bundle.CreateCumplimientoActividadesRequiredMessage_idSolicitante}">
+                        <f:selectItems value="#{solicitanteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{cumplimientoActividadesController.create}" value="#{bundle.CreateCumplimientoActividadesSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{cumplimientoActividadesController.prepareList}" value="#{bundle.CreateCumplimientoActividadesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCumplimientoActividadesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
