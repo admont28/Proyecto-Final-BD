@@ -66,19 +66,19 @@ public class HorarioActividadesController implements Serializable {
 
     public String prepareList() {
         recreateModel();
-        return "List";
+        return "/Pages/horarioActividades/List";
     }
 
     public String prepareView() {
         current = (HorarioActividades) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+        return "/Pages/horarioActividades/View";
     }
 
     public String prepareCreate() {
         current = new HorarioActividades();
         selectedItemIndex = -1;
-        return "Create";
+        return "/Pages/horarioActividades/Create";
     }
 
     public String create() {
@@ -95,14 +95,14 @@ public class HorarioActividadesController implements Serializable {
     public String prepareEdit() {
         current = (HorarioActividades) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "Edit";
+        return "/Pages/horarioActividades/Edit";
     }
 
     public String update() {
         try {
             getJpaController().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("HorarioActividadesUpdated"));
-            return "View";
+            return "/Pages/horarioActividades/View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -115,7 +115,7 @@ public class HorarioActividadesController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "/Pages/horarioActividades/List";
     }
 
     public String destroyAndView() {
@@ -123,11 +123,11 @@ public class HorarioActividadesController implements Serializable {
         recreateModel();
         updateCurrentItem();
         if (selectedItemIndex >= 0) {
-            return "View";
+            return "/Pages/horarioActividades/View";
         } else {
             // all items were removed - go back to list
             recreateModel();
-            return "List";
+            return "/Pages/horarioActividades/List";
         }
     }
 
@@ -173,13 +173,13 @@ public class HorarioActividadesController implements Serializable {
     public String next() {
         getPagination().nextPage();
         recreateModel();
-        return "List";
+        return "/Pages/horarioActividades/List";
     }
 
     public String previous() {
         getPagination().previousPage();
         recreateModel();
-        return "List";
+        return "/Pages/horarioActividades/List";
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {
