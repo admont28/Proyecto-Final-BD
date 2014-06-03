@@ -13,33 +13,42 @@
     
     <h:body class="cuerpo">
         <h1 class="tituloh1"> Rol de Solicitante</h1>
-    <p:accordionPanel>
-    <p:tab title="Solicitud Auxiliares">
+        <p:accordionPanel>
+            <p:tab title="Solicitud Auxiliares">
                 <h:panelGrid columns="1" cellpadding="10">
-      
-     <ui:insert name="solicitudAuxiliares">
+                    <ui:insert name="solicitudAuxiliares">
                         <ui:include src="/Pages/solicitudAuxiliares/ListarSolicitante.xhtml" />
                     </ui:insert>    
-                      </h:panelGrid>
+                </h:panelGrid>
             </p:tab>
-        
-         <p:tab title="Cumplimiento Actividades">
+
+            <p:tab title="Cumplimiento Actividades">
                 <h:panelGrid columns="1" cellpadding="10">
-      
-     <ui:insert name="CumplimientoActividades">
+                    <ui:insert name="CumplimientoActividades">
+                        <ui:include src="/Pages/cumplimientoActividades/ListarSolicitante.xhtml" />
                         <ui:include src="/Pages/auxCumplimientoActividades/ListarSolicitante.xhtml" />
                     </ui:insert>    
-                      </h:panelGrid>
+                </h:panelGrid>
             </p:tab>
-        
-        
-        
-        
-        
-        <div >
-            <h1> Paginas correspondientes al rol de Solicitante</h1>
-        </div>
-        
-            </p:accordionPanel>
+            
+            <p:tab title="Evaluacion Auxiliares">
+                <h:panelGrid columns="1" cellpadding="10">
+                    <ui:insert name="solicitudAuxiliares">
+                        <ui:include src="/Pages/evaluacionAuxiliares/ListarSolicitante.xhtml" />
+                    </ui:insert>    
+                </h:panelGrid>
+            </p:tab>
+            
+            <p:tab title="Evaluacion Auxiliares">
+                <h:panelGrid columns="1" cellpadding="10">
+                    <ui:insert name="solicitudAuxiliares">
+                        <ui:include src="/Pages/horarioActividades/ListarSolicitante.xhtml" />
+                        <ui:include src="/Pages/fechaHorario/ListarSolicitante.xhtml" />
+                    </ui:insert>    
+                </h:panelGrid>
+            </p:tab>
+            
+            
+        </p:accordionPanel>
     </h:body>
 </html>
