@@ -33,7 +33,7 @@
             
             <p:tab title="Evaluacion Auxiliares">
                 <h:panelGrid columns="1" cellpadding="10">
-                    <ui:insert name="solicitudAuxiliares">
+                    <ui:insert name="ListEvaluacionAuxiliares">
                         <ui:include src="/Pages/evaluacionAuxiliares/ListarSolicitante.xhtml" />
                     </ui:insert>    
                 </h:panelGrid>
@@ -41,9 +41,19 @@
             
             <p:tab title="Evaluacion Auxiliares">
                 <h:panelGrid columns="1" cellpadding="10">
-                    <ui:insert name="solicitudAuxiliares">
+                    <ui:insert name="ListHorarioAuxiliares">
                         <ui:include src="/Pages/horarioActividades/ListarSolicitante.xhtml" />
                         <ui:include src="/Pages/fechaHorario/ListarSolicitante.xhtml" />
+                        <ui:include src="/Pages/hora/ListarSolicitante.xhtml" />
+                    </ui:insert>    
+                </h:panelGrid>
+            </p:tab>
+            
+            <p:tab title="Inconformidad Auxiliar">
+                <h:panelGrid columns="1" cellpadding="10">
+                    <ui:insert name="ListInconformidadAuxiliares">
+                        <ui:include src="/Pages/inconformidadAuxiliares/ListarSolicitante.xhtml" />
+                        <ui:include src="/Pages/incAuxAuxiliar/ListarSolicitante.xhtml" />
                     </ui:insert>    
                 </h:panelGrid>
             </p:tab>
