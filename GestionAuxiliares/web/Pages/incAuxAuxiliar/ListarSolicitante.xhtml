@@ -10,7 +10,7 @@
             <h:outputText value="#{bundle.ListIncAuxAuxiliarTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <center> 
+            <center>
                 <h:form styleClass="jsfcrud_list_form">
                     <h:panelGroup id="messagePanel" layout="block">
                         <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
@@ -38,6 +38,15 @@
                                     <h:outputText value="#{bundle.ListIncAuxAuxiliarTitle_auxiliar}"/>
                                 </f:facet>
                                 <h:outputText value="#{item.auxiliar}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="&nbsp;"/>
+                                </f:facet>
+                                <h:commandLink action="#{incAuxAuxiliarController.prepareView}" value="#{bundle.ListIncAuxAuxiliarViewLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{incAuxAuxiliarController.prepareEdit}" value="#{bundle.ListIncAuxAuxiliarEditLink}"/>
+                                <h:outputText value=" "/>
                             </h:column>
                         </h:dataTable>
                     </h:panelGroup>

@@ -179,13 +179,13 @@ public class InscripcionConvocatoriaController implements Serializable {
     public String next() {
         getPagination().nextPage();
         recreateModel();
-        return "List";
+        return "/Pages/inscripcionConvocatoria/List";
     }
 
     public String previous() {
         getPagination().previousPage();
         recreateModel();
-        return "List";
+        return "/Pages/inscripcionConvocatoria/List";
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {

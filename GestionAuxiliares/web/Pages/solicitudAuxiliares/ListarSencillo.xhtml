@@ -10,68 +10,70 @@
             <h:outputText value="#{bundle.ListSolicitudAuxiliaresTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <h:form styleClass="jsfcrud_list_form">
-                <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
-                <h:outputText escape="false" value="#{bundle.ListSolicitudAuxiliaresEmpty}" rendered="#{solicitudAuxiliaresController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{solicitudAuxiliaresController.items.rowCount > 0}">
-                    <h:outputText value="#{solicitudAuxiliaresController.pagination.pageFirstItem + 1}..#{solicitudAuxiliaresController.pagination.pageLastItem + 1}/#{solicitudAuxiliaresController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{solicitudAuxiliaresController.previous}" value="#{bundle.Previous} #{solicitudAuxiliaresController.pagination.pageSize}" rendered="#{solicitudAuxiliaresController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{solicitudAuxiliaresController.next}" value="#{bundle.Next} #{solicitudAuxiliaresController.pagination.pageSize}" rendered="#{solicitudAuxiliaresController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{solicitudAuxiliaresController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSolicitudAuxiliaresTitle_solicitudAuxiliaresId}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.solicitudAuxiliaresId}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSolicitudAuxiliaresTitle_cantidadAuxiliares}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.cantidadAuxiliares}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSolicitudAuxiliaresTitle_cantidadHoras}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.cantidadHoras}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSolicitudAuxiliaresTitle_descSolicitudAuxiliares}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.descSolicitudAuxiliares}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSolicitudAuxiliaresTitle_fechaCreacion}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.fechaCreacion}">
-                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                            </h:outputText>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSolicitudAuxiliaresTitle_idSolicitante}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idSolicitante}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSolicitudAuxiliaresTitle_convocatoria}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.convocatoria}"/>
-                        </h:column>
-                    </h:dataTable>
-                </h:panelGroup>
-                <br />
-                <h:commandLink action="#{solicitudAuxiliaresController.prepareCreate}" value="#{bundle.ListSolicitudAuxiliaresCreateLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListSolicitudAuxiliaresIndexLink}"/>
-            </h:form>
+            <center>
+                <h:form styleClass="jsfcrud_list_form">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <h:outputText escape="false" value="#{bundle.ListSolicitudAuxiliaresEmpty}" rendered="#{solicitudAuxiliaresController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{solicitudAuxiliaresController.items.rowCount > 0}">
+                        <h:outputText value="#{solicitudAuxiliaresController.pagination.pageFirstItem + 1}..#{solicitudAuxiliaresController.pagination.pageLastItem + 1}/#{solicitudAuxiliaresController.pagination.itemsCount}"/>&nbsp;
+                        <h:commandLink action="#{solicitudAuxiliaresController.previous}" value="#{bundle.Previous} #{solicitudAuxiliaresController.pagination.pageSize}" rendered="#{solicitudAuxiliaresController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{solicitudAuxiliaresController.next}" value="#{bundle.Next} #{solicitudAuxiliaresController.pagination.pageSize}" rendered="#{solicitudAuxiliaresController.pagination.hasNextPage}"/>&nbsp;
+                        <h:dataTable value="#{solicitudAuxiliaresController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListSolicitudAuxiliaresTitle_solicitudAuxiliaresId}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.solicitudAuxiliaresId}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListSolicitudAuxiliaresTitle_cantidadAuxiliares}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.cantidadAuxiliares}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListSolicitudAuxiliaresTitle_cantidadHoras}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.cantidadHoras}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListSolicitudAuxiliaresTitle_descSolicitudAuxiliares}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.descSolicitudAuxiliares}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListSolicitudAuxiliaresTitle_fechaCreacion}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaCreacion}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListSolicitudAuxiliaresTitle_idSolicitante}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idSolicitante}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListSolicitudAuxiliaresTitle_convocatoria}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.convocatoria}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                    <br />
+                    <h:commandLink action="#{solicitudAuxiliaresController.prepareCreate}" value="#{bundle.ListSolicitudAuxiliaresCreateLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.ListSolicitudAuxiliaresIndexLink}"/>
+                </h:form>
+            </center>
         </ui:define>
     </ui:composition>
 

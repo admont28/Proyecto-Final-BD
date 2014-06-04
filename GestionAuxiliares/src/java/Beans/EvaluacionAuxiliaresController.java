@@ -66,19 +66,19 @@ public class EvaluacionAuxiliaresController implements Serializable {
 
     public String prepareList() {
         recreateModel();
-        return "List";
+        return "/Pages/evaluacionAuxiliares/List";
     }
 
     public String prepareView() {
         current = (EvaluacionAuxiliares) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+        return "/Pages/evaluacionAuxiliares/View";
     }
 
     public String prepareCreate() {
         current = new EvaluacionAuxiliares();
         selectedItemIndex = -1;
-        return "Create";
+        return "/Pages/evaluacionAuxiliares/Create";
     }
 
     public String create() {
@@ -95,14 +95,14 @@ public class EvaluacionAuxiliaresController implements Serializable {
     public String prepareEdit() {
         current = (EvaluacionAuxiliares) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "Edit";
+        return "/Pages/evaluacionAuxiliares/Edit";
     }
 
     public String update() {
         try {
             getJpaController().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("EvaluacionAuxiliaresUpdated"));
-            return "View";
+            return "/Pages/evaluacionAuxiliares/View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -115,7 +115,7 @@ public class EvaluacionAuxiliaresController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "/Pages/evaluacionAuxiliares/List";
     }
 
     public String destroyAndView() {
@@ -123,11 +123,11 @@ public class EvaluacionAuxiliaresController implements Serializable {
         recreateModel();
         updateCurrentItem();
         if (selectedItemIndex >= 0) {
-            return "View";
+            return "/Pages/evaluacionAuxiliares/View";
         } else {
             // all items were removed - go back to list
             recreateModel();
-            return "List";
+            return "/Pages/evaluacionAuxiliares/List";
         }
     }
 
@@ -173,13 +173,13 @@ public class EvaluacionAuxiliaresController implements Serializable {
     public String next() {
         getPagination().nextPage();
         recreateModel();
-        return "List";
+        return "/Pages/evaluacionAuxiliares/List";
     }
 
     public String previous() {
         getPagination().previousPage();
         recreateModel();
-        return "List";
+        return "/Pages/evaluacionAuxiliares/List";
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {

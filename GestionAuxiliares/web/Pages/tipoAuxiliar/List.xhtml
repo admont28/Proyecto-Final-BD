@@ -10,46 +10,48 @@
             <h:outputText value="#{bundle.ListTipoAuxiliarTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <h:form styleClass="jsfcrud_list_form">
-                <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
-                <h:outputText escape="false" value="#{bundle.ListTipoAuxiliarEmpty}" rendered="#{tipoAuxiliarController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{tipoAuxiliarController.items.rowCount > 0}">
-                    <h:outputText value="#{tipoAuxiliarController.pagination.pageFirstItem + 1}..#{tipoAuxiliarController.pagination.pageLastItem + 1}/#{tipoAuxiliarController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{tipoAuxiliarController.previous}" value="#{bundle.Previous} #{tipoAuxiliarController.pagination.pageSize}" rendered="#{tipoAuxiliarController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{tipoAuxiliarController.next}" value="#{bundle.Next} #{tipoAuxiliarController.pagination.pageSize}" rendered="#{tipoAuxiliarController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{tipoAuxiliarController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTipoAuxiliarTitle_tipoAuxiliarId}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.tipoAuxiliarId}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTipoAuxiliarTitle_descripcionTipoAuxiliar}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.descripcionTipoAuxiliar}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="&nbsp;"/>
-                            </f:facet>
-                            <h:commandLink action="#{tipoAuxiliarController.prepareView}" value="#{bundle.ListTipoAuxiliarViewLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{tipoAuxiliarController.prepareEdit}" value="#{bundle.ListTipoAuxiliarEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{tipoAuxiliarController.destroy}" value="#{bundle.ListTipoAuxiliarDestroyLink}"/>
-                        </h:column>
-                    </h:dataTable>
-                </h:panelGroup>
-                <br />
-                <h:commandLink action="#{tipoAuxiliarController.prepareCreate}" value="#{bundle.ListTipoAuxiliarCreateLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListTipoAuxiliarIndexLink}"/>
-            </h:form>
+            <center>
+                <h:form styleClass="jsfcrud_list_form">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <h:outputText escape="false" value="#{bundle.ListTipoAuxiliarEmpty}" rendered="#{tipoAuxiliarController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{tipoAuxiliarController.items.rowCount > 0}">
+                        <h:outputText value="#{tipoAuxiliarController.pagination.pageFirstItem + 1}..#{tipoAuxiliarController.pagination.pageLastItem + 1}/#{tipoAuxiliarController.pagination.itemsCount}"/>&nbsp;
+                        <h:commandLink action="#{tipoAuxiliarController.previous}" value="#{bundle.Previous} #{tipoAuxiliarController.pagination.pageSize}" rendered="#{tipoAuxiliarController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{tipoAuxiliarController.next}" value="#{bundle.Next} #{tipoAuxiliarController.pagination.pageSize}" rendered="#{tipoAuxiliarController.pagination.hasNextPage}"/>&nbsp;
+                        <h:dataTable value="#{tipoAuxiliarController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListTipoAuxiliarTitle_tipoAuxiliarId}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.tipoAuxiliarId}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListTipoAuxiliarTitle_descripcionTipoAuxiliar}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.descripcionTipoAuxiliar}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="&nbsp;"/>
+                                </f:facet>
+                                <h:commandLink action="#{tipoAuxiliarController.prepareView}" value="#{bundle.ListTipoAuxiliarViewLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{tipoAuxiliarController.prepareEdit}" value="#{bundle.ListTipoAuxiliarEditLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{tipoAuxiliarController.destroy}" value="#{bundle.ListTipoAuxiliarDestroyLink}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                    <br />
+                    <h:commandLink action="#{tipoAuxiliarController.prepareCreate}" value="#{bundle.ListTipoAuxiliarCreateLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.ListTipoAuxiliarIndexLink}"/>
+                </h:form>
+            </center>
         </ui:define>
     </ui:composition>
 
