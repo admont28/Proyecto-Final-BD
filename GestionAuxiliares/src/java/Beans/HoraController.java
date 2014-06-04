@@ -67,20 +67,20 @@ public class HoraController implements Serializable {
 
     public String prepareList() {
         recreateModel();
-        return "List";
+        return "/Pages/hora/List";
     }
 
     public String prepareView() {
         current = (Hora) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+        return "/Pages/hora/View";
     }
 
     public String prepareCreate() {
         current = new Hora();
         current.setHoraPK(new Entities.HoraPK());
         selectedItemIndex = -1;
-        return "Create";
+        return "/Pages/hora/Create";
     }
 
     public String create() {
@@ -98,7 +98,7 @@ public class HoraController implements Serializable {
     public String prepareEdit() {
         current = (Hora) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "Edit";
+        return "/Pages/hora/Edit";
     }
 
     public String update() {
@@ -106,7 +106,7 @@ public class HoraController implements Serializable {
             current.getHoraPK().setIdFechaHorario(current.getFechaHorario().getFechaHorarioId());
             getJpaController().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("HoraUpdated"));
-            return "View";
+            return "/Pages/hora/View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -119,7 +119,7 @@ public class HoraController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "/Pages/hora/List";
     }
 
     public String destroyAndView() {
@@ -127,11 +127,11 @@ public class HoraController implements Serializable {
         recreateModel();
         updateCurrentItem();
         if (selectedItemIndex >= 0) {
-            return "View";
+            return "/Pages/hora/View";
         } else {
             // all items were removed - go back to list
             recreateModel();
-            return "List";
+            return "/Pages/hora/List";
         }
     }
 
@@ -177,13 +177,13 @@ public class HoraController implements Serializable {
     public String next() {
         getPagination().nextPage();
         recreateModel();
-        return "List";
+        return "/Pages/hora/List";
     }
 
     public String previous() {
         getPagination().previousPage();
         recreateModel();
-        return "List";
+        return "/Pages/hora/List";
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {

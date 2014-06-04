@@ -66,19 +66,19 @@ public class SolicitudAuxiliaresController implements Serializable {
 
     public String prepareList() {
         recreateModel();
-        return "/Pages/solicitudAuxiliares/LList";
+        return "/Pages/solicitudAuxiliares/List";
     }
 
     public String prepareView() {
         current = (SolicitudAuxiliares) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "/Pages/solicitudAuxiliares/LView";
+        return "/Pages/solicitudAuxiliares/View";
     }
 
     public String prepareCreate() {
         current = new SolicitudAuxiliares();
         selectedItemIndex = -1;
-        return "/Pages/solicitudAuxiliares/LCreate";
+        return "/Pages/solicitudAuxiliares/Create";
     }
 
     public String create() {
@@ -95,14 +95,14 @@ public class SolicitudAuxiliaresController implements Serializable {
     public String prepareEdit() {
         current = (SolicitudAuxiliares) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "/Pages/solicitudAuxiliares/LEdit";
+        return "/Pages/solicitudAuxiliares/Edit";
     }
 
     public String update() {
         try {
             getJpaController().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("SolicitudAuxiliaresUpdated"));
-            return "/Pages/solicitudAuxiliares/LView";
+            return "/Pages/solicitudAuxiliares/View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -115,7 +115,7 @@ public class SolicitudAuxiliaresController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "/Pages/solicitudAuxiliares/LList";
+        return "/Pages/solicitudAuxiliares/List";
     }
 
     public String destroyAndView() {
@@ -123,11 +123,11 @@ public class SolicitudAuxiliaresController implements Serializable {
         recreateModel();
         updateCurrentItem();
         if (selectedItemIndex >= 0) {
-            return "/Pages/solicitudAuxiliares/LView";
+            return "/Pages/solicitudAuxiliares/View";
         } else {
             // all items were removed - go back to list
             recreateModel();
-            return "/Pages/solicitudAuxiliares/LList";
+            return "/Pages/solicitudAuxiliares/List";
         }
     }
 
@@ -173,13 +173,13 @@ public class SolicitudAuxiliaresController implements Serializable {
     public String next() {
         getPagination().nextPage();
         recreateModel();
-        return "/Pages/solicitudAuxiliares/LList";
+        return "/Pages/solicitudAuxiliares/List";
     }
 
     public String previous() {
         getPagination().previousPage();
         recreateModel();
-        return "/Pages/solicitudAuxiliares/LList";
+        return "/Pages/solicitudAuxiliares/List";
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {

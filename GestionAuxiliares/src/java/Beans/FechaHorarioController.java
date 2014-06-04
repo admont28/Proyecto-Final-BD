@@ -66,19 +66,19 @@ public class FechaHorarioController implements Serializable {
 
     public String prepareList() {
         recreateModel();
-        return "List";
+        return "/Pages/fechaHorario/List";
     }
 
     public String prepareView() {
         current = (FechaHorario) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+        return "/Pages/fechaHorario/View";
     }
 
     public String prepareCreate() {
         current = new FechaHorario();
         selectedItemIndex = -1;
-        return "Create";
+        return "/Pages/fechaHorario/Create";
     }
 
     public String create() {
@@ -95,7 +95,7 @@ public class FechaHorarioController implements Serializable {
     public String prepareEdit() {
         current = (FechaHorario) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "Edit";
+        return "/Pages/fechaHorario/Edit";
     }
 
     public String update() {
@@ -115,7 +115,7 @@ public class FechaHorarioController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "/Pages/fechaHorario/List";
     }
 
     public String destroyAndView() {
@@ -123,11 +123,11 @@ public class FechaHorarioController implements Serializable {
         recreateModel();
         updateCurrentItem();
         if (selectedItemIndex >= 0) {
-            return "View";
+            return "/Pages/fechaHorario/View";
         } else {
             // all items were removed - go back to list
             recreateModel();
-            return "List";
+            return "/Pages/fechaHorario/List";
         }
     }
 
@@ -173,13 +173,13 @@ public class FechaHorarioController implements Serializable {
     public String next() {
         getPagination().nextPage();
         recreateModel();
-        return "List";
+        return "/Pages/fechaHorario/List";
     }
 
     public String previous() {
         getPagination().previousPage();
         recreateModel();
-        return "List";
+        return "/Pages/fechaHorario/List";
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {

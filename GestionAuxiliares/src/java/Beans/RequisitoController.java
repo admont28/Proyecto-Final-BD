@@ -66,19 +66,19 @@ public class RequisitoController implements Serializable {
 
     public String prepareList() {
         recreateModel();
-        return "List";
+        return "/Pages/requisito/List";
     }
 
     public String prepareView() {
         current = (Requisito) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+        return "/Pages/requisito/View";
     }
 
     public String prepareCreate() {
         current = new Requisito();
         selectedItemIndex = -1;
-        return "Create";
+        return "/Pages/requisito/Create";
     }
 
     public String create() {
@@ -95,14 +95,14 @@ public class RequisitoController implements Serializable {
     public String prepareEdit() {
         current = (Requisito) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "Edit";
+        return "/Pages/requisito/Edit";
     }
 
     public String update() {
         try {
             getJpaController().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("RequisitoUpdated"));
-            return "View";
+            return "/Pages/requisito/View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -115,7 +115,7 @@ public class RequisitoController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "/Pages/requisito/List";
     }
 
     public String destroyAndView() {
@@ -123,11 +123,11 @@ public class RequisitoController implements Serializable {
         recreateModel();
         updateCurrentItem();
         if (selectedItemIndex >= 0) {
-            return "View";
+            return "/Pages/requisito/View";
         } else {
             // all items were removed - go back to list
             recreateModel();
-            return "List";
+            return "/Pages/requisito/List";
         }
     }
 
@@ -173,13 +173,13 @@ public class RequisitoController implements Serializable {
     public String next() {
         getPagination().nextPage();
         recreateModel();
-        return "List";
+        return "/Pages/requisito/List";
     }
 
     public String previous() {
         getPagination().previousPage();
         recreateModel();
-        return "List";
+        return "/Pages/requisito/List";
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {

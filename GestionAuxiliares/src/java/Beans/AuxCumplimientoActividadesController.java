@@ -67,20 +67,20 @@ public class AuxCumplimientoActividadesController implements Serializable {
 
     public String prepareList() {
         recreateModel();
-        return "List";
+        return "/Pages/auxCumplimientoActividades/List";
     }
 
     public String prepareView() {
         current = (AuxCumplimientoActividades) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+        return "/Pages/auxCumplimientoActividades/View";
     }
 
     public String prepareCreate() {
         current = new AuxCumplimientoActividades();
         current.setAuxCumplimientoActividadesPK(new Entities.AuxCumplimientoActividadesPK());
         selectedItemIndex = -1;
-        return "Create";
+        return "/Pages/auxCumplimientoActividades/Create";
     }
 
     public String create() {
@@ -99,7 +99,7 @@ public class AuxCumplimientoActividadesController implements Serializable {
     public String prepareEdit() {
         current = (AuxCumplimientoActividades) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "Edit";
+        return "/Pages/auxCumplimientoActividades/Edit";
     }
 
     public String update() {
@@ -108,7 +108,7 @@ public class AuxCumplimientoActividadesController implements Serializable {
             current.getAuxCumplimientoActividadesPK().setIdAuxiliar(current.getAuxiliar().getAuxiliarId());
             getJpaController().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AuxCumplimientoActividadesUpdated"));
-            return "View";
+            return "/Pages/auxCumplimientoActividades/View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -121,7 +121,7 @@ public class AuxCumplimientoActividadesController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "/Pages/auxCumplimientoActividades/List";
     }
 
     public String destroyAndView() {
@@ -129,11 +129,11 @@ public class AuxCumplimientoActividadesController implements Serializable {
         recreateModel();
         updateCurrentItem();
         if (selectedItemIndex >= 0) {
-            return "View";
+            return "/Pages/auxCumplimientoActividades/View";
         } else {
             // all items were removed - go back to list
             recreateModel();
-            return "List";
+            return "/Pages/auxCumplimientoActividades/List";
         }
     }
 
@@ -179,13 +179,13 @@ public class AuxCumplimientoActividadesController implements Serializable {
     public String next() {
         getPagination().nextPage();
         recreateModel();
-        return "List";
+        return "/Pages/auxCumplimientoActividades/List";
     }
 
     public String previous() {
         getPagination().previousPage();
         recreateModel();
-        return "List";
+        return "/Pages/auxCumplimientoActividades/List";
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {

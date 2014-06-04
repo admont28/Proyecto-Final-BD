@@ -18,6 +18,8 @@
                 <h:panelGrid columns="1" cellpadding="10">
                     <ui:insert name="solicitudAuxiliares">
                         <ui:include src="/Pages/solicitudAuxiliares/ListarSolicitante.xhtml" />
+                        <ui:include src="/Pages/tipoRequisito/ListarSolicitante.xhtml" />
+                        <ui:include src="/Pages/requisito/ListarSolicitante.xhtml" />
                     </ui:insert>    
                 </h:panelGrid>
             </p:tab>
@@ -26,6 +28,7 @@
                 <h:panelGrid columns="1" cellpadding="10">
                     <ui:insert name="CumplimientoActividades">
                         <ui:include src="/Pages/cumplimientoActividades/ListarSolicitante.xhtml" />
+                        <ui:include src="/Pages/tipoAuxiliar/ListarSolicitante.xhtml" />
                         <ui:include src="/Pages/auxCumplimientoActividades/ListarSolicitante.xhtml" />
                     </ui:insert>    
                 </h:panelGrid>
@@ -39,12 +42,13 @@
                 </h:panelGrid>
             </p:tab>
             
-            <p:tab title="Evaluacion Auxiliares">
+            <p:tab title="Horario de Actividades Auxiliares">
                 <h:panelGrid columns="1" cellpadding="10">
                     <ui:insert name="ListHorarioAuxiliares">
                         <ui:include src="/Pages/horarioActividades/ListarSolicitante.xhtml" />
                         <ui:include src="/Pages/fechaHorario/ListarSolicitante.xhtml" />
                         <ui:include src="/Pages/hora/ListarSolicitante.xhtml" />
+                        <ui:include src="/Pages/tipoAuxiliar/ListarSolicitante.xhtml" />                       
                     </ui:insert>    
                 </h:panelGrid>
             </p:tab>
