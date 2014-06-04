@@ -7,7 +7,8 @@
 package Beans;
 
 import Controller.ConsultasJpaController;
-import DTO.AuxiliaresSeleccionadosDTO;
+import DTO.AuxiliaresPresentadosDTO;
+import DTO.EvaluacionesDTO;
 import java.io.Serializable;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -44,7 +45,15 @@ public class ConsultasController {
         return jpaController;
     }
     
-    public List<AuxiliaresSeleccionadosDTO> getAuxiliaresSeleccionados(){
+    public List<AuxiliaresPresentadosDTO> getAuxiliaresPresentados(){
+        return getJpaController().getAuxiliaresPresentados();
+    }
+    
+    public List<EvaluacionesDTO> getPromedioEvaluaciones(){
+        return getJpaController().getPromedioEvaluaciones();
+    }
+    
+    public List<EvaluacionesDTO> getAuxiliaresSeleccionados(){
         return getJpaController().getAuxiliaresSeleccionados();
     }
 }

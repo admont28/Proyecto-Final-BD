@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Auxilaires Seleccionados"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <center>
+                <h:form styleClass="jsfcrud_list_form">
+                    <p:dataTable id="auxiliaresPresendetados" var="aux" value="#{consultasController.auxiliaresPresentados}" resizableColumns="true" style="margin-bottom:20px">
+                        <f:facet name="header">
+                            #{bundle.TituloAuxiliaresPresentados}
+                        </f:facet>
+                        <p:column headerText="#{bundle.TituloIdConvocatoria}">
+                            <h:outputText value="#{aux.idConvocatoria}" />
+                        </p:column>
+                        <p:column headerText="#{bundle.TituloIdEvaluacionAuxiliares}">
+                            <h:outputText value="#{aux.idEvaluacionAuxiliares}" />
+                        </p:column>
+                        <p:column headerText="#{bundle.TituloFechaCreacionConvocatoria}">
+                            <h:outputText value="#{aux.fechaCreacionConvocatoria}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="#{bundle.TituloNombreAuxiliar}">
+                            <h:outputText value="#{aux.nombreAuxiliar}" />
+                        </p:column>
+                        <p:column headerText="#{bundle.TituloApellidoAuxiliar}">
+                            <h:outputText value="#{aux.apellidoAuxiliar}" />
+                        </p:column>
+                        <p:column headerText="#{bundle.TituloEstadoAuxiliar}">
+                            <h:outputText value="#{aux.estadoAuxiliar}" />
+                        </p:column>
+                    </p:dataTable>
+                    <h:outputText value="La anterior anterior tabla ha sido suministrada por la siguiente consulta:"></h:outputText>
+                    <br/>
+                    <h:outputText value="SELECT CON.CONVOCATORIA_ID, EVA.EVALUACION_AUXILIARES_ID, CON.FECHA_CREACION , AUX.NOMBRE_AUXILIAR, AUX.APELLIDO_AUXILIAR, SEL.ESTADO 
+                                    FROM SELECCION_AUXILIARES SEL, AUXILIAR AUX, CONVOCATORIA CON, EVALUACION_AUXILIARES EVA 
+                                    WHERE AUX.AUXILIAR_ID= SEL.ID_AUXILIARES 
+                                    AND SEL.ID_EVALUACION_AUXILIARES= EVA.EVALUACION_AUXILIARES_ID 
+                                    AND EVA.ID_CONVOCATORIA=CON.CONVOCATORIA_ID 
+                                    ORDER BY CON.CONVOCATORIA_ID ASC"></h:outputText>
+                </h:form>
+            </center>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Promedio de calificacion en las evaluaciones de auxiliares"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <center>
+                <h:form styleClass="jsfcrud_list_form">
+                    <p:dataTable id="promedioEvaluaciones" var="prom" value="#{consultasController.promedioEvaluaciones}" resizableColumns="true" style="margin-bottom:20px">
+                        <f:facet name="header">
+                            #{bundle.TituloPromedioEvaluaciones}
+                        </f:facet>
+                        <p:column headerText="#{bundle.TituloIdEvaluacionAuxiliares}">
+                            <h:outputText value="#{prom.idEvaluacion}" />
+                        </p:column>
+                        <p:column headerText="#{bundle.TituloPromedioCalificaciones}">
+                            <h:outputText value="#{prom.promedio}" />
+                        </p:column>
+                    </p:dataTable>
+                    <h:outputText value="La anterior anterior tabla ha sido suministrada por la siguiente consulta: "></h:outputText>
+                    <br/>
+                    <h:outputText value="SELECT ROUND(AVG(SEL.CALIFICACION)) as PROMEDIO, EVA.EVALUACION_AUXILIARES_ID
+                                        FROM AUXILIAR AUX, SELECCION_AUXILIARES SEL, EVALUACION_AUXILIARES EVA 
+                                        WHERE SEL.ID_AUXILIARES= AUX.AUXILIAR_ID
+                                        AND SEL.ESTADO = 1
+                                        GROUP BY EVA.EVALUACION_AUXILIARES_ID"></h:outputText>
+                </h:form>
+            </center>
+        </ui:define>
+    </ui:composition>
+
+</html>

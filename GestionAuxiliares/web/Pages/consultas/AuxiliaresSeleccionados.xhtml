@@ -15,24 +15,31 @@
                 <h:form styleClass="jsfcrud_list_form">
                     <p:dataTable id="auxiliaresSeleccionados" var="aux" value="#{consultasController.auxiliaresSeleccionados}" resizableColumns="true" style="margin-bottom:20px">
                         <f:facet name="header">
-                            Auxiliares Seleccionados...
+                            #{bundle.TituloAuxiliaresSeleccionados}
                         </f:facet>
-                        <p:column headerText="Nombre Auxiliar">
+                        <p:column headerText="#{bundle.TituloNombreAuxiliar}">
                             <h:outputText value="#{aux.nombreAuxiliar}" />
                         </p:column>
-                        <p:column headerText="Apellido Auxiliar">
+                        <p:column headerText="#{bundle.TituloApellidoAuxiliar}">
                             <h:outputText value="#{aux.apellidoAuxiliar}" />
                         </p:column>
-                        <p:column headerText="ID de Convocatoria">
-                            <h:outputText value="#{aux.idConvocatoria}" />
+                        <p:column headerText="#{bundle.TituloIdEvaluacionAuxiliares}">
+                            <h:outputText value="#{aux.idEvaluacion}" />
                         </p:column>
-                        <p:column headerText="ID de Evaluación de Auxiliares">
-                            <h:outputText value="#{aux.idEvaluacionAuxiliares}" />
+                        <p:column headerText="#{bundle.TituloCalificacionAuxiliar}">
+                            <h:outputText value="#{aux.calificacionAuxiliar}" />
                         </p:column>
-                        <p:column headerText="Estado del Auxiliar">
-                            <h:outputText value="#{aux.estadoAuxiliar}" />
+                        <p:column headerText="#{bundle.TituloPromedioAuxiliar}">
+                            <h:outputText value="#{aux.promedio}" />
                         </p:column>
                     </p:dataTable>
+                    <h:outputText value="La anterior anterior tabla ha sido suministrada por la siguiente consulta:"></h:outputText>
+                    <br/>
+                    <h:outputText value="SELECT AUX.NOMBRE_AUXILIAR, AUX.APELLIDO_AUXILIAR, SEL.ID_EVALUACION_AUXILIARES, SEL.CALIFICACION, SEL.PROMEDIO
+                                        FROM AUXILIAR AUX, SELECCION_AUXILIARES SEL
+                                        WHERE SEL.ID_AUXILIARES=AUX.AUXILIAR_ID
+                                        AND SEL.ESTADO=1
+                                        ORDER BY SEL.PROMEDIO DESC"></h:outputText>
                 </h:form>
             </center>
         </ui:define>

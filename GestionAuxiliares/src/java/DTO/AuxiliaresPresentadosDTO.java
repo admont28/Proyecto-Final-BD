@@ -7,12 +7,13 @@
 package DTO;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
  *
  * @author DavidMontoya
  */
-public class AuxiliaresSeleccionadosDTO implements Serializable{
+public class AuxiliaresPresentadosDTO implements Serializable{
     
         private String nombreAuxiliar;
         
@@ -23,23 +24,46 @@ public class AuxiliaresSeleccionadosDTO implements Serializable{
         private String idEvaluacionAuxiliares;
         
         private short estadoAuxiliar;
+        
+        private Date fechaCreacionConvocatoria;
+
 
         /**
-         * Método constructor de la clase AuxiliaresSeleccionadosDTO.
+         * Método constructor de la clase AuxiliaresPresentadosDTO.
          * @param nombreAuxiliar es el nombre del auxiliar.
          * @param apellidoAuxiliar es el apellido del auxiliar.
          * @param idConvocatoria es la convocatoria para la cual se selecciona el auxiliar.
          * @param idEvaluacionAuxiliares es la evaluacion de la cual se selecciona el auxiliar.
          * @param estadoAuxiliar es el estado del auxiliar, 1 seleccionado, 0 no seleccionado.
          */
-    public AuxiliaresSeleccionadosDTO(String nombreAuxiliar, String apellidoAuxiliar, String idConvocatoria, String idEvaluacionAuxiliares, short estadoAuxiliar) {
+    public AuxiliaresPresentadosDTO(String nombreAuxiliar, String apellidoAuxiliar, String idConvocatoria, String idEvaluacionAuxiliares, short estadoAuxiliar, Date fechaCreacionConvocatoria) {
         this.nombreAuxiliar = nombreAuxiliar;
         this.apellidoAuxiliar = apellidoAuxiliar;
         this.idConvocatoria = idConvocatoria;
         this.idEvaluacionAuxiliares = idEvaluacionAuxiliares;
         this.estadoAuxiliar = estadoAuxiliar;
+        this.fechaCreacionConvocatoria = fechaCreacionConvocatoria;
     }
 
+    
+    /**
+     * Get the value of fechaCreacionConvocatoria
+     *
+     * @return the value of fechaCreacionConvocatoria
+     */
+    public Date getFechaCreacionConvocatoria() {
+        return fechaCreacionConvocatoria;
+    }
+
+    /**
+     * Set the value of fechaCreacionConvocatoria
+     *
+     * @param fechaCreacionConvocatoria new value of fechaCreacionConvocatoria
+     */
+    public void setFechaCreacionConvocatoria(Date fechaCreacionConvocatoria) {
+        this.fechaCreacionConvocatoria = fechaCreacionConvocatoria;
+    }
+    
     /**
      * Get the value of estadoAuxiliar
      *

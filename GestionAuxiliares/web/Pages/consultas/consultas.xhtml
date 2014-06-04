@@ -12,6 +12,13 @@
         <h1 class="tituloh1"> Consultas SQL para la Gestión de Auxiliaresr</h1>
         
         <p:accordionPanel>
+            <p:tab title="Auxiliares Presentados a las Convocatorias">
+                <h:panelGrid columns="1" cellpadding="10">
+                    <ui:insert name="AuxiliaresPresentados">
+                        <ui:include src="/Pages/consultas/AuxiliaresPresentados.xhtml" />
+                    </ui:insert>
+                </h:panelGrid>
+            </p:tab>
             <p:tab title="Auxiliares Seleccionados">
                 <h:panelGrid columns="1" cellpadding="10">
                     <ui:insert name="AuxiliaresSeleccionados">
@@ -19,87 +26,13 @@
                     </ui:insert>
                 </h:panelGrid>
             </p:tab>
+            <p:tab title="Promedio en Evaluaciones de Auxiliares">
+                <h:panelGrid columns="1" cellpadding="10">
+                    <ui:insert name="PromedioEvaluaciones">
+                        <ui:include src="/Pages/consultas/PromedioEvaluaciones.xhtml" />
+                    </ui:insert>
+                </h:panelGrid>
+            </p:tab>
         </p:accordionPanel>
-        <!--
-        <br />
-        <h:link outcome="/Pages/area/List" value="Show All Area Items"/>
-        <br />
-        <h:link outcome="/Pages/auxCumplimientoActividades/List" value="Show All AuxCumplimientoActividades Items"/>
-        <br />
-        <h:link outcome="/Pages/auxiliar/List" value="Show All Auxiliar Items"/>
-        <br />
-        <h:link outcome="/Pages/cargo/List" value="Show All Cargo Items"/>
-        <br />
-        <h:link outcome="/Pages/ciudad/List" value="Show All Ciudad Items"/>
-        <br />
-        <h:link outcome="/Pages/consejoCurricular/List" value="Show All ConsejoCurricular Items"/>
-        <br />
-        <h:link outcome="/Pages/convocatoria/List" value="Show All Convocatoria Items"/>
-        <br />
-        <h:link outcome="/Pages/cumplimientoActividades/List" value="Show All CumplimientoActividades Items"/>
-        <br />
-        <h:link outcome="/Pages/detalleResolucion/List" value="Show All DetalleResolucion Items"/>
-        <br />
-        <h:link outcome="/Pages/direccion/List" value="Show All Direccion Items"/>
-        <br />
-        <h:link outcome="/Pages/directores/List" value="Show All Directores Items"/>
-        <br />
-        <h:link outcome="/Pages/evaluacionAuxiliares/List" value="Show All EvaluacionAuxiliares Items"/>
-        <br />
-        <h:link outcome="/Pages/facultad/List" value="Show All Facultad Items"/>
-        <br />
-        <h:link outcome="/Pages/fechaHorario/List" value="Show All FechaHorario Items"/>
-        <br />
-        <h:link outcome="/Pages/hora/List" value="Show All Hora Items"/>
-        <br />
-        <h:link outcome="/Pages/horarioActividades/List" value="Show All HorarioActividades Items"/>
-        <br />
-        <h:link outcome="/Pages/incAuxAuxiliar/List" value="Show All IncAuxAuxiliar Items"/>
-        <br />
-        <h:link outcome="/Pages/inconformidadAuxiliares/List" value="Show All InconformidadAuxiliares Items"/>
-        <br />
-        <h:link outcome="/Pages/inscripcionConvocatoria/List" value="Show All InscripcionConvocatoria Items"/>
-        <br />
-        <h:link outcome="/Pages/jornada/List" value="Show All Jornada Items"/>
-        <br />
-        <h:link outcome="/Pages/programaAcademico/List" value="Show All ProgramaAcademico Items"/>
-        <br />
-        <h:link outcome="/Pages/requisito/List" value="Show All Requisito Items"/>
-        <br />
-        <h:link outcome="/Pages/resAuxiliaresSeleccionados/List" value="Show All ResAuxiliaresSeleccionados Items"/>
-        <br />
-        <h:link outcome="/Pages/secretaria/List" value="Show All Secretaria Items"/>
-        <br />
-        <h:link outcome="/Pages/seleccionAuxiliares/List" value="Show All SeleccionAuxiliares Items"/>
-        <br />
-        <h:link outcome="/Pages/solicitante/List" value="Show All Solicitante Items"/>
-        <br />
-        <h:link outcome="/Pages/solicitudAuxiliares/List" value="Show All SolicitudAuxiliares Items"/>
-        <br />
-        <h:link outcome="/Pages/tipoAuxiliar/List" value="Show All TipoAuxiliar Items"/>
-        <br />
-        <h:link outcome="/Pages/tipoRequisito/List" value="Show All TipoRequisito Items"/>
-        <br />
-        <h:link outcome="/Pages/universidad/List" value="Show All Universidad Items"/>
-        -->
     </h:body>
 </html>
-
-
-<!--<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-    <h:head>
-        <title><h:outputText value="#{bundle.TitleProject}"></h:outputText></title>
-        <link rel="stylesheet" href="/GestionAuxiliares/resources/css/jsfcrud.css"/>
-    </h:head>
-    <h:body class="cuerpo">
-       
-            <h1> Paginas correspondientes al rol de Auxiliar.</h1>
-            <h2> Paginas correspondientes al rol de Auxiliar.</h2>
-            <h:outputLabel  value="Ver Convocatorias"/>
-    </h:body>
-</html>
--->
