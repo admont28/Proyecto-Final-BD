@@ -66,7 +66,7 @@ public class TipoAuxiliarController implements Serializable {
 
     public String prepareList() {
         recreateModel();
-        return "List";
+        return "/Pages/tipoAuxiliar/List";
     }
 
     public String prepareView() {
