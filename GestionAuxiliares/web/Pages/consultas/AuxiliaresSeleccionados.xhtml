@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Auxilaires Seleccionados"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <center>
+                <h:form styleClass="jsfcrud_list_form">
+                    <p:dataTable id="auxiliaresSeleccionados" var="aux" value="#{consultasController.auxiliaresSeleccionados}" resizableColumns="true" style="margin-bottom:20px">
+                        <f:facet name="header">
+                            Auxiliares Seleccionados...
+                        </f:facet>
+                        <p:column headerText="Nombre Auxiliar">
+                            <h:outputText value="#{aux.nombreAuxiliar}" />
+                        </p:column>
+                        <p:column headerText="Apellido Auxiliar">
+                            <h:outputText value="#{aux.apellidoAuxiliar}" />
+                        </p:column>
+                        <p:column headerText="ID de Convocatoria">
+                            <h:outputText value="#{aux.idConvocatoria}" />
+                        </p:column>
+                        <p:column headerText="ID de Evaluación de Auxiliares">
+                            <h:outputText value="#{aux.idEvaluacionAuxiliares}" />
+                        </p:column>
+                        <p:column headerText="Estado del Auxiliar">
+                            <h:outputText value="#{aux.estadoAuxiliar}" />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </center>
+        </ui:define>
+    </ui:composition>
+
+</html>

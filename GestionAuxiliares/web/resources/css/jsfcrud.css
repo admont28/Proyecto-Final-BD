@@ -35,8 +35,14 @@ root {
     padding: 10px;
 }
 
+.consultas{
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
 .tituloh2{
-    font-size: 30px; 
+    font-size: 30px;
 }
 .enlacea {
     color: #e33b06;

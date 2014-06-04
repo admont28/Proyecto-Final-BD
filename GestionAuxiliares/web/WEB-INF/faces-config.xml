@@ -9,4 +9,10 @@
             <var>bundle</var>
         </resource-bundle>
     </application>
+    <managed-bean>
+        <description>Es el managedBean que se encarga de conectarse con el jpaController para realizar consultas SQL y devolver los resultados a las paginas.</description>
+        <managed-bean-name>consultasController</managed-bean-name>
+        <managed-bean-class>Beans.ConsultasController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
 </faces-config>

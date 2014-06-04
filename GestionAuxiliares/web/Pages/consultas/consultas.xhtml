@@ -9,40 +9,13 @@
         <link rel="stylesheet" href="/GestionAuxiliares/resources/css/jsfcrud.css"/>
     </h:head>
     <h:body class="cuerpo">
-        <h1 class="tituloh1"> Rol de Auxiliar</h1>
+        <h1 class="tituloh1"> Consultas SQL para la Gestión de Auxiliaresr</h1>
         
         <p:accordionPanel>
-            <p:tab title="Convocatorias">
+            <p:tab title="Auxiliares Seleccionados">
                 <h:panelGrid columns="1" cellpadding="10">
-                    <!-- <p:graphicImage name="demo/images/godfather/godfather1.jpg" /> 
-                    <h:outputText
-                        value="The story begins as Don Vito Corleone..." />
-                    -->
-                    <ui:insert name="ListConvocatoria">
-                        <ui:include src="/Pages/convocatoria/ListarSencillo.xhtml" />
-                    </ui:insert>
-                </h:panelGrid>
-            </p:tab>
-            <p:tab title="Inscripción a Convocatoria">
-                <h:panelGrid columns="2" cellpadding="10">
-                    <ui:insert name="ListInscripcionConvocatoria">
-                        <ui:include src="/Pages/inscripcionConvocatoria/ListaParaAuxiliar.xhtml" />
-                    </ui:insert>
-                </h:panelGrid>
-            </p:tab>
-            <p:tab title="Evaluaciones de Auxiliares">
-                <h:panelGrid columns="1" cellpadding="10">
-                    <ui:insert name="ListEvaluacionAuxiliares">
-                        <ui:include src="/Pages/evaluacionAuxiliares/ListarSencillo.xhtml" />
-                        <ui:include src="/Pages/seleccionAuxiliares/ListarSencillo.xhtml" />
-                    </ui:insert>
-                </h:panelGrid>
-            </p:tab>
-            <p:tab title="Cumplimiento de Actividades">
-                <h:panelGrid columns="2" cellpadding="10">
-                    <ui:insert name="ListCumplimientoActividades">
-                        <ui:include src="/Pages/cumplimientoActividades/ListarSencillo.xhtml" />
-                        <ui:include src="/Pages/auxCumplimientoActividades/ListarSencillo.xhtml" /> 
+                    <ui:insert name="AuxiliaresSeleccionados">
+                        <ui:include src="/Pages/consultas/AuxiliaresSeleccionados.xhtml" />
                     </ui:insert>
                 </h:panelGrid>
             </p:tab>

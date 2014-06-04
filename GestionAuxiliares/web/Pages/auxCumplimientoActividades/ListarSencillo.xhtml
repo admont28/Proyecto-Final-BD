@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <center>
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAuxCumplimientoActividadesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <center>
+                <h:form styleClass="jsfcrud_list_form">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <h:outputText escape="false" value="#{bundle.ListAuxCumplimientoActividadesEmpty}" rendered="#{auxCumplimientoActividadesController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{auxCumplimientoActividadesController.items.rowCount > 0}">
+                        <h:outputText value="#{auxCumplimientoActividadesController.pagination.pageFirstItem + 1}..#{auxCumplimientoActividadesController.pagination.pageLastItem + 1}/#{auxCumplimientoActividadesController.pagination.itemsCount}"/>&nbsp;
+                        <h:commandLink action="#{auxCumplimientoActividadesController.previous}" value="#{bundle.Previous} #{auxCumplimientoActividadesController.pagination.pageSize}" rendered="#{auxCumplimientoActividadesController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{auxCumplimientoActividadesController.next}" value="#{bundle.Next} #{auxCumplimientoActividadesController.pagination.pageSize}" rendered="#{auxCumplimientoActividadesController.pagination.hasNextPage}"/>&nbsp;
+                        <h:dataTable value="#{auxCumplimientoActividadesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListAuxCumplimientoActividadesTitle_idTipoAuxiliar}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idTipoAuxiliar}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListAuxCumplimientoActividadesTitle_cumplimientoActividades}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.cumplimientoActividades}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListAuxCumplimientoActividadesTitle_auxiliar}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.auxiliar}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="&nbsp;"/>
+                                </f:facet>
+                                <h:commandLink action="#{auxCumplimientoActividadesController.prepareView}" value="#{bundle.ListAuxCumplimientoActividadesViewLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{auxCumplimientoActividadesController.prepareEdit}" value="#{bundle.ListAuxCumplimientoActividadesEditLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{auxCumplimientoActividadesController.destroy}" value="#{bundle.ListAuxCumplimientoActividadesDestroyLink}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                    <br />
+                    <h:commandLink action="#{auxCumplimientoActividadesController.prepareCreate}" value="#{bundle.ListAuxCumplimientoActividadesCreateLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.ListAuxCumplimientoActividadesIndexLink}"/>
+                </h:form>
+            </center>
+        </ui:define>
+    </ui:composition>
+</center>
+</html>
