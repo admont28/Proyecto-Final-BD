@@ -66,19 +66,19 @@ public class SolicitanteController implements Serializable {
 
     public String prepareList() {
         recreateModel();
-        return "List";
+        return "/Pages/solicitante/List";
     }
 
     public String prepareView() {
         current = (Solicitante) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+        return "/Pages/solicitante/View";
     }
 
     public String prepareCreate() {
         current = new Solicitante();
         selectedItemIndex = -1;
-        return "Create";
+        return "/Pages/solicitante/Create";
     }
 
     public String create() {
@@ -95,14 +95,14 @@ public class SolicitanteController implements Serializable {
     public String prepareEdit() {
         current = (Solicitante) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "Edit";
+        return "/Pages/solicitante/Edit";
     }
 
     public String update() {
         try {
             getJpaController().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("SolicitanteUpdated"));
-            return "View";
+            return "/Pages/solicitante/View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -115,7 +115,7 @@ public class SolicitanteController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "/Pages/solicitante/List";
     }
 
     public String destroyAndView() {
@@ -123,11 +123,11 @@ public class SolicitanteController implements Serializable {
         recreateModel();
         updateCurrentItem();
         if (selectedItemIndex >= 0) {
-            return "View";
+            return "/Pages/solicitante/View";
         } else {
             // all items were removed - go back to list
             recreateModel();
-            return "List";
+            return "/Pages/solicitante/List";
         }
     }
 
@@ -173,13 +173,13 @@ public class SolicitanteController implements Serializable {
     public String next() {
         getPagination().nextPage();
         recreateModel();
-        return "List";
+        return "/Pages/solicitante/List";
     }
 
     public String previous() {
         getPagination().previousPage();
         recreateModel();
-        return "List";
+        return "/Pages/solicitante/List";
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {

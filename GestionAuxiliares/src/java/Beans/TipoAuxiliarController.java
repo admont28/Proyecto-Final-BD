@@ -72,13 +72,13 @@ public class TipoAuxiliarController implements Serializable {
     public String prepareView() {
         current = (TipoAuxiliar) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+        return "/Pages/tipoAuxiliar/View";
     }
 
     public String prepareCreate() {
         current = new TipoAuxiliar();
         selectedItemIndex = -1;
-        return "Create";
+        return "/Pages/tipoAuxiliar/Create";
     }
 
     public String create() {
@@ -95,14 +95,14 @@ public class TipoAuxiliarController implements Serializable {
     public String prepareEdit() {
         current = (TipoAuxiliar) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "Edit";
+        return "/Pages/tipoAuxiliar/Edit";
     }
 
     public String update() {
         try {
             getJpaController().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("TipoAuxiliarUpdated"));
-            return "View";
+            return "/Pages/tipoAuxiliar/View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -115,7 +115,7 @@ public class TipoAuxiliarController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "/Pages/tipoAuxiliar/List";
     }
 
     public String destroyAndView() {
@@ -123,11 +123,11 @@ public class TipoAuxiliarController implements Serializable {
         recreateModel();
         updateCurrentItem();
         if (selectedItemIndex >= 0) {
-            return "View";
+            return "/Pages/tipoAuxiliar/View";
         } else {
             // all items were removed - go back to list
             recreateModel();
-            return "List";
+            return "/Pages/tipoAuxiliar/List";
         }
     }
 
@@ -173,13 +173,13 @@ public class TipoAuxiliarController implements Serializable {
     public String next() {
         getPagination().nextPage();
         recreateModel();
-        return "List";
+        return "/Pages/tipoAuxiliar/List";
     }
 
     public String previous() {
         getPagination().previousPage();
         recreateModel();
-        return "List";
+        return "/Pages/tipoAuxiliar/List";
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {

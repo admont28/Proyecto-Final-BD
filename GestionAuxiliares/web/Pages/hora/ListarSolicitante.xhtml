@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListHoraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <center>
+                <h:form styleClass="jsfcrud_list_form">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <h:outputText escape="false" value="#{bundle.ListHoraEmpty}" rendered="#{horaController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{horaController.items.rowCount > 0}">
+                        <h:outputText value="#{horaController.pagination.pageFirstItem + 1}..#{horaController.pagination.pageLastItem + 1}/#{horaController.pagination.itemsCount}"/>&nbsp;
+                        <h:commandLink action="#{horaController.previous}" value="#{bundle.Previous} #{horaController.pagination.pageSize}" rendered="#{horaController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{horaController.next}" value="#{bundle.Next} #{horaController.pagination.pageSize}" rendered="#{horaController.pagination.hasNextPage}"/>&nbsp;
+                        <h:dataTable value="#{horaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListHoraTitle_horaPK_horaInicio}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.horaPK.horaInicio}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListHoraTitle_horaFin}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.horaFin}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListHoraTitle_fechaHorario}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaHorario}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="&nbsp;"/>
+                                </f:facet>
+                                <h:commandLink action="#{horaController.prepareView}" value="#{bundle.ListHoraViewLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{horaController.prepareEdit}" value="#{bundle.ListHoraEditLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{horaController.destroy}" value="#{bundle.ListHoraDestroyLink}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                    <br />
+                    <h:commandLink action="#{horaController.prepareCreate}" value="#{bundle.ListHoraCreateLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.ListHoraIndexLink}"/>
+                </h:form>
+            </center>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -66,19 +66,19 @@ public class AuxiliarController implements Serializable {
 
     public String prepareList() {
         recreateModel();
-        return "List";
+        return "/Pages/auxiliar/List";
     }
 
     public String prepareView() {
         current = (Auxiliar) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+        return "/Pages/auxiliar/View";
     }
 
     public String prepareCreate() {
         current = new Auxiliar();
         selectedItemIndex = -1;
-        return "Create";
+        return "/Pages/auxiliar/Create";
     }
 
     public String create() {
@@ -95,14 +95,14 @@ public class AuxiliarController implements Serializable {
     public String prepareEdit() {
         current = (Auxiliar) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "Edit";
+        return "/Pages/auxiliar/Edit";
     }
 
     public String update() {
         try {
             getJpaController().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AuxiliarUpdated"));
-            return "View";
+            return "/Pages/auxiliar/View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -115,7 +115,7 @@ public class AuxiliarController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "/Pages/auxiliar/List";
     }
 
     public String destroyAndView() {
@@ -123,11 +123,11 @@ public class AuxiliarController implements Serializable {
         recreateModel();
         updateCurrentItem();
         if (selectedItemIndex >= 0) {
-            return "View";
+            return "/Pages/auxiliar/View";
         } else {
             // all items were removed - go back to list
             recreateModel();
-            return "List";
+            return "/Pages/auxiliar/List";
         }
     }
 
@@ -173,13 +173,13 @@ public class AuxiliarController implements Serializable {
     public String next() {
         getPagination().nextPage();
         recreateModel();
-        return "List";
+        return "/Pages/auxiliar/List";
     }
 
     public String previous() {
         getPagination().previousPage();
         recreateModel();
-        return "List";
+        return "/Pages/auxiliar/List";
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {
