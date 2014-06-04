@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Cumplimiento de Actividades"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <center>
+                <h:form styleClass="jsfcrud_list_form">
+                    <p:dataTable id="CumplimientoActividades" var="cump" value="#{consultasController.auxiliaresCumplieron}" resizableColumns="true" style="margin-bottom:20px">
+                        <f:facet name="header">
+                            #{bundle.TituloCumplimientoActividades}
+                        </f:facet>
+                        <p:column headerText="#{bundle.TituloNombreAuxiliar}">
+                            <h:outputText value="#{cump.nombreAuxiliar}" />
+                        </p:column>
+                        <p:column headerText="#{bundle.TituloApellidoAuxiliar}">
+                            <h:outputText value="#{cump.apellidoAuxiliar}" />
+                        </p:column>
+                        <p:column headerText="#{bundle.TituloDescripcionCumplimiento}">
+                            <h:outputText value="#{cump.descripcionCumplimientoActividades}" />
+                        </p:column>
+                    </p:dataTable>
+                    <h:outputText value="La anterior anterior tabla ha sido suministrada por la siguiente consulta:"></h:outputText>
+                    <br/>
+                    <h:outputText value="SELECT AUX.NOMBRE_AUXILIAR, AUX.APELLIDO_AUXILIAR, CUM.DESC_CUMP_ACT AS DESCRIPCION 
+                                        FROM CUMPLIMIENTO_ACTIVIDADES CUM, AUXILIAR AUX, AUX_CUMPLIMIENTO_ACTIVIDADES AUXCUM, SOLICITANTE SOL 
+                                        WHERE AUX.AUXILIAR_ID = AUXCUM.ID_AUXILIAR 
+                                        AND AUXCUM.ID_CUMPLIMIENTO_ACTIVIDADES=CUM.CUMP_ACT_ID 
+                                        AND SOL.SOLICITANTE_ID = CUM.ID_SOLICITANTE"></h:outputText>
+                </h:form>
+            </center>
+        </ui:define>
+    </ui:composition>
+
+</html>

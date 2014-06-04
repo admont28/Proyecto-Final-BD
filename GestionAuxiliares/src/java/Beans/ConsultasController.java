@@ -8,7 +8,10 @@ package Beans;
 
 import Controller.ConsultasJpaController;
 import DTO.AuxiliaresPresentadosDTO;
+import DTO.CumplimientoActividadesDTO;
 import DTO.EvaluacionesDTO;
+import DTO.HorarioAuxiliarDTO;
+import DTO.SolicitudDTO;
 import java.io.Serializable;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -45,15 +48,59 @@ public class ConsultasController {
         return jpaController;
     }
     
+    /**
+     * Metodo que se conecta con el controller para traer los auxiliares presentados en las convocatorias.
+     * @return una lista de AuxiliaresPresentadosDTO para su facil acceso a los datos consultados.
+     */
     public List<AuxiliaresPresentadosDTO> getAuxiliaresPresentados(){
         return getJpaController().getAuxiliaresPresentados();
     }
     
+    /**
+     * Metodo que se contecta con el controller para traer el promedio de calificacion de las evaluaciones.
+     * @return una lista de EvaluacionesDTO para su facil acceso a los datos consultados.
+     */
     public List<EvaluacionesDTO> getPromedioEvaluaciones(){
         return getJpaController().getPromedioEvaluaciones();
     }
     
+    /**
+     * Metodo que se conecta con el controller para traer los auxiliares seleccionados en las convocatorias.
+     * @return una lista de EvaluacionesDTO para su facil acceso a los datos consultados.
+     */
     public List<EvaluacionesDTO> getAuxiliaresSeleccionados(){
         return getJpaController().getAuxiliaresSeleccionados();
+    }
+    
+    /**
+     * Metodo que se conecta con el controller para traer las solicitudes hechas por los solicitantes.
+     * @return una lista de SolicitudDTO para su facil acceso a los datos consultados.
+     */
+    public List<SolicitudDTO> getSolicitudes(){
+        return getJpaController().getSolicitudes();
+    }
+    
+    /**
+     * Metodo que se conecta con el controller para traer los horarios de cada auxiliares.
+     * @return una lista de HorarioAuxiliarDTO para su facil acceso a los datos consultados.
+     */
+    public List<HorarioAuxiliarDTO> getHorarioAuxiliares(){
+        return getJpaController().getHorarioAuxiliares();
+    }
+    
+    /**
+     * Metodo que se conecta con el controller para traer los auxiliares que cumplieron exitosamente con las actividades planteadas.
+     * @return una lista de CumplimientoActividadesDTO para su facil acceso a los datos consultados.
+     */
+    public List<CumplimientoActividadesDTO> getAuxiliaresCumplieron(){
+        return getJpaController().getAuxiliaresCumplieron();
+    }
+    
+    /**
+     * Metodo que se conecta con el controller para traer la cantidad total de auxiliares solicitados por cada solicitante.
+     * @return una lista de SolicitudDTO para su facil acceso a los datos consultados.
+     */
+    public List<SolicitudDTO> getTotalidadAuxiliaresSolicitados(){
+        return getJpaController().getTotalidadAuxiliaresSolicitados();
     }
 }

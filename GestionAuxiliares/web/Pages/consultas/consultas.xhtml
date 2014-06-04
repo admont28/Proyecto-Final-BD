@@ -33,6 +33,34 @@
                     </ui:insert>
                 </h:panelGrid>
             </p:tab>
+            <p:tab title="Solicitudes de Auxiliares">
+                <h:panelGrid columns="1" cellpadding="10">
+                    <ui:insert name="SolicitudesAuxiliares">
+                        <ui:include src="/Pages/consultas/SolicitudesAuxiliares.xhtml" />
+                    </ui:insert>
+                </h:panelGrid>
+            </p:tab>
+            <p:tab title="Horario de Auxiliares">
+                <h:panelGrid columns="1" cellpadding="10">
+                    <ui:insert name="HorarioAuxiliares">
+                        <ui:include src="/Pages/consultas/HorariosAuxiliares.xhtml" />
+                    </ui:insert>
+                </h:panelGrid>
+            </p:tab>
+            <p:tab title="Cumplimiento de Actividades">
+                <h:panelGrid columns="1" cellpadding="10">
+                    <ui:insert name="CumplimientoActividades">
+                        <ui:include src="/Pages/consultas/CumplimientoActividades.xhtml" />
+                    </ui:insert>
+                </h:panelGrid>
+            </p:tab>
+            <p:tab title="Cantida de Auxiliares Solicitados">
+                <h:panelGrid columns="1" cellpadding="10">
+                    <ui:insert name="CantidadAuxiliaresSolicitados">
+                        <ui:include src="/Pages/consultas/CantidadAuxiliaresSolicitados.xhtml" />
+                    </ui:insert>
+                </h:panelGrid>
+            </p:tab>
         </p:accordionPanel>
     </h:body>
 </html>

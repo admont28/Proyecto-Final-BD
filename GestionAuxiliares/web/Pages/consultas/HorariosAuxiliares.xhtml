@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Horarios de Auxiliares"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <center>
+                <h:form styleClass="jsfcrud_list_form">
+                    <p:dataTable id="HorariosAuxiliares" var="aux" value="#{consultasController.horarioAuxiliares}" resizableColumns="true" style="margin-bottom:20px">
+                        <f:facet name="header">
+                            #{bundle.TituloHorarioAuxiliares}
+                        </f:facet>
+                        <p:column headerText="#{bundle.TituloNombreAuxiliar}">
+                            <h:outputText value="#{aux.nombreAuxiliar}" />
+                        </p:column>
+                        <p:column headerText="#{bundle.TituloApellidoAuxiliar}">
+                            <h:outputText value="#{aux.apellidoAuxiliar}" />
+                        </p:column>
+                        <p:column headerText="#{bundle.TituloTipoAuxiliar}">
+                            <h:outputText value="#{aux.tipoAuxiliar}" />
+                        </p:column>
+                        <p:column headerText="#{bundle.TituloIdHorarioActividades}">
+                            <h:outputText value="#{aux.idHorarioActividades}" />
+                        </p:column>
+                        <p:column headerText="#{bundle.TituloFechaHorarioActividades}">
+                            <h:outputText value="#{aux.fechaHorario}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="#{bundle.TituloHoraInicio}">
+                            <h:outputText value="#{aux.horaInicio}" />
+                        </p:column>
+                        <p:column headerText="#{bundle.TituloHoraFin}">
+                            <h:outputText value="#{aux.horaFinal}" />
+                        </p:column>
+                    </p:dataTable>
+                    <h:outputText value="La anterior anterior tabla ha sido suministrada por la siguiente consulta:"></h:outputText>
+                    <br/>
+                    <h:outputText value="SELECT AUX.NOMBRE_AUXILIAR, AUX.APELLIDO_AUXILIAR,  TIPO.DESCRIPCION_TIPO_AUXILIAR,  HORAC.HORARIO_ACTIVIDADES_ID, FEC.FECHA_FECHA_HORARIO, HORA.HORA_INICIO, HORA.HORA_FIN 
+                                        FROM AUXILIAR AUX, HORARIO_ACTIVIDADES HORAC, TIPO_AUXILIAR TIPO, FECHA_HORARIO FEC, HORA HORA 
+                                        WHERE AUX.AUXILIAR_ID =HORAC.ID_AUXILIAR 
+                                        AND HORAC.HORARIO_ACTIVIDADES_ID=FEC.ID_HORARIO_ACTIVIDADES 
+                                        AND FEC.FECHA_HORARIO_ID= HORA.ID_FECHA_HORARIO 
+                                        AND HORAC.ID_TIPO_AUXILIAR=TIPO.TIPO_AUXILIAR_ID 
+                                        ORDER BY HORAC.HORARIO_ACTIVIDADES_ID ASC"></h:outputText>
+                </h:form>
+            </center>
+        </ui:define>
+    </ui:composition>
+
+</html>
